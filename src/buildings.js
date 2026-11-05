@@ -228,7 +228,8 @@ function placeConstruction(team, tx, ty) {
   } else if (b.type === 'refinery') {
     const exit = buildingExit(b);
     if (exit) {
-      spawnUnit('harvester', team, exit.x, exit.y); // "Harvester deployed" quando ele chega ao cristal
+      const h = spawnUnit('harvester', team, exit.x, exit.y);
+      announceHarvester(h, 0.8); // "Harvester deployed" na hora em que o Coletor sai da Refinaria
     }
   }
   if (team === 0 && !demoMode) sfx('place', b.x, b.y);
@@ -315,8 +316,8 @@ function updateProduction(b, dt) {
   }
   if (b.team === 0 && !demoMode) {
     sfx('unit', b.x, b.y);
-    // O Coletor não tem fala de pronto: ele anuncia "Harvester deployed" ao começar a colher (sem fala dupla)
-    if (item.type !== 'harvester') announce('unidade_' + item.type); // "Tank ready"...
+    if (item.type === 'harvester') announceHarvester(u); // "Harvester deployed" na hora em que sai da Fábrica
+    else announce('unidade_' + item.type); // "Tank ready"...
     notify(def.name + ' ready', null, 'unit');
   }
 }

@@ -139,7 +139,6 @@ function updateHarvester(u, dt) {
       if (isCrystal(gameMap, ut.x, ut.y)) {
         u.claim = ut.y * gameMap.w + ut.x;
         u.hstate = 'harvest';
-        if (u.team === 0) announceHarvester(u); // primeira vez no cristal: "Harvester deployed"
       } else {
         u.hstate = 'idle';
       }

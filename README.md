@@ -42,7 +42,7 @@ A escolha fica guardada. Endereços: `index.html?premium`, `?classico`, `?leve`.
   em qualquer navegador, sem internet e sem voz instalada. tudo em inglês: "Defense turret ready",
   "Alert! The base is under attack!", "Attention, hostiles detected", "Power plant ready", "Power running low",
   "We lost a unit", vitória, derrota e outras, cada uma com o seu sinal (sirene, sino, pulso de radar).
-  **"Harvester deployed"** toca quando o Coletor chega ao cristal e começa a colher pela primeira vez (é a única fala do Coletor pronto, sem repetir em português).
+  **"Harvester deployed"** toca na hora em que o Coletor é entregue (sai da Refinaria ou da Fábrica); é a única fala de Coletor pronto.
   Soldados e veículos respondem ao serem selecionados e ao receberem ordens. Locutora e tropas nunca
   falam juntas, perigo passa na frente e a batalha abaixa enquanto alguém fala.
   Sem o pacote, sai a voz do navegador e, sem ela, uma voz robótica de rádio.

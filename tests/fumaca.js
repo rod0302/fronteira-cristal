@@ -107,16 +107,16 @@ function check(ok, msg) {
   }, tipo);
   check(await build('refinery') === null, 'Refinaria construída');
   check(await ev(() => __jogo.unidades.some(u => u.time === 0 && u.tipo === 'harvester')), 'Refinaria veio com um Coletor');
-  // "Harvester deployed" sai quando o Coletor chega ao cristal e começa a colher (em tempo real)
+  // "Harvester deployed" sai logo que o Coletor é entregue pela Refinaria (até ~3 s, em tempo real)
   let fala = null;
-  await ev(() => __jogo.pausar(false)); // o teste congela o tempo real; solta só para o Coletor andar
-  for (let i = 0; i < 40 && !fala; i++) {
+  await ev(() => __jogo.pausar(false)); // o teste congela o tempo real; solta para a fila do locutor andar
+  for (let i = 0; i < 6 && !fala; i++) {
     await page.waitForTimeout(500);
     fala = await ev(() => __jogo.falas.find(f => f.key === 'harvester_deployed'));
   }
   await ev(() => __jogo.pausar(true));
   if (!fala) console.log(await ev(() => JSON.stringify({ falas: __jogo.falas, h: units.filter(u => u.type === 'harvester' && u.team === 0).map(u => u.hstate), fase: gameState, t: gameTime })));
-  check(!!fala && fala.via !== 'mudo', 'locutor anunciou "Harvester deployed" (' + (fala ? fala.via : 'nada') + ')');
+  check(!!fala && fala.via !== 'mudo', 'locutor anunciou "Harvester deployed" logo na entrega do Coletor (' + (fala ? fala.via : 'nada') + ')');
   // Sem fala dupla: o Coletor só tem "Harvester deployed" (a antiga "Coletor pronto" saiu)
   check(await ev(() => !__jogo.falas.some(f => f.key.startsWith('unidade_harvester')) && !Object.keys(VOICE_PACK).some(k => k.startsWith('unidade_harvester'))),
     'Coletor sem fala duplicada de "pronto"');

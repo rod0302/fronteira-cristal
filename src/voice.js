@@ -405,14 +405,14 @@ function say(text, lang, gap, lead) {
 
 // ---------- Eventos do jogo -> falas ----------
 
-// Coletor implantado no campo de cristal pela primeira vez: "Harvester deployed"
-// (o som hidráulico e a voz saem juntos, na mesma entrada da fila)
+// Coletor entregue (sai da Refinaria ou da Fábrica): "Harvester deployed" na mesma hora, como era o antigo
+// "Coletor pronto" (pedido do Rodrigo, 05/11). O som hidráulico e a voz saem juntos, na mesma entrada da fila.
 const harvDeployed = new WeakSet();
-function announceHarvester(u) {
+function announceHarvester(u, lead = 0) {
   if (demoMode || !u || u.team !== 0 || harvDeployed.has(u)) return;
   harvDeployed.add(u);
   if (silentSim) return;
-  announce('harvester_deployed', { cue: 'deploy', cueX: u.x, cueY: u.y });
+  announce('harvester_deployed', { lead, cue: 'deploy', cueX: u.x, cueY: u.y });
 }
 
 // Vigia de situações (só lê o estado do jogo): inimigo à vista, inimigo perto da base.

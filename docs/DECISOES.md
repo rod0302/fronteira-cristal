@@ -198,7 +198,7 @@ Detalhe em `logs/rodada-3-correcoes.md`.
 - Prédios inimigos já vistos continuam lembrados como antes.
 
 ### Jogo todo em inglês, sem fala duplicada do Coletor (05/11/2026)
-- **Pedido do Rodrigo:** o Coletor dizia "Coletor pronto" e, segundos depois, "Harvester deployed", que significam a mesma coisa. Agora só existe **"Harvester deployed"**, quando o Coletor começa a colher pela primeira vez (da Refinaria ou da Fábrica). As chaves `unidade_harvester` e `unidade_harvester_v2` saíram do catálogo e do pacote.
+- **Pedido do Rodrigo:** o Coletor dizia "Coletor pronto" e, segundos depois, "Harvester deployed", que significam a mesma coisa. Agora só existe **"Harvester deployed"**, que toca **na hora em que o Coletor é entregue** (sai da Refinaria ou da Fábrica), como o antigo "Coletor pronto". Na primeira versão em inglês ela esperava o Coletor chegar ao cristal e o Rodrigo achou que demorava demais. As chaves `unidade_harvester` e `unidade_harvester_v2` saíram do catálogo e do pacote.
 - **Tudo em inglês:** menus, painel, dicas, objetivos, avisos, nomes de unidades, prédios, facções e mapas, e todas as falas (locutora `af_heart`, infantaria `am_michael`, veículos e Coletor `am_fenrir`, todas en-us). O título na tela passou a **CRYSTAL FRONTIER**. As chaves internas das falas continuam em português (só identificadores).
 - **Textos originais**, escritos para este jogo; evitamos de propósito bordões conhecidos de outros jogos (ex.: "Construction finished", "Not enough credits", "We can't build there").
 - `genderize()` ficou neutro (em inglês o adjetivo não muda) e a voz de reserva do navegador usa sempre en-US.
