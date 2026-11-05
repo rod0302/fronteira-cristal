@@ -6,9 +6,9 @@ const MAP_W = 80;           // largura do mapa em tiles
 const MAP_H = 80;           // altura do mapa em tiles
 // Mapas: cada um é uma semente do gerador. O mapa é simétrico (as duas bases são iguais).
 const MAPS = [
-  { name: 'Planalto Gêmeo', seed: 1992 },
-  { name: 'Vale Partido', seed: 7 },
-  { name: 'Três Campos', seed: 4242 },
+  { name: 'Twin Plateau', seed: 1992 },
+  { name: 'Broken Valley', seed: 7 },
+  { name: 'Three Fields', seed: 4242 },
 ];
 
 const CAM_SPEED = 800;      // velocidade da câmera em px/s
@@ -35,17 +35,17 @@ const TERRAIN = {
 //   hpMul: vida das unidades; rofMul: tempo entre tiros (menor = mais rápido); costMul: preço
 const FACTIONS = [
   {
-    id: 'cobalto', name: 'Liga Cobalto', bonus: 'Unidades com +18% de vida',
+    id: 'cobalto', name: 'Cobalt League', bonus: 'Units have +18% health',
     color: '#3d8bfd', dark: '#1f4f9a', light: '#9cc4ff',
     hpMul: 1.18, rofMul: 1, costMul: 1,
   },
   {
-    id: 'brasa', name: 'Clã Brasa', bonus: 'Armas atiram 18% mais rápido',
+    id: 'brasa', name: 'Ember Clan', bonus: 'Weapons fire 18% faster',
     color: '#d9533b', dark: '#7f2617', light: '#ffb09f',
     hpMul: 1, rofMul: 0.85, costMul: 1,
   },
   {
-    id: 'ambar', name: 'Consórcio Âmbar', bonus: 'Unidades custam 10% menos',
+    id: 'ambar', name: 'Amber Consortium', bonus: 'Units cost 10% less',
     color: '#e0a526', dark: '#8a5f0c', light: '#ffe08a',
     hpMul: 1, rofMul: 1, costMul: 0.9,
   },
@@ -55,9 +55,9 @@ const FACTIONS = [
 //   income: multiplicador do cristal que a IA recebe; buildSpeed: velocidade de produção
 //   firstWave/waveGap: segundos até o 1º ataque e entre ataques; waveStart/waveGrow: tamanho das ondas
 const DIFFICULTIES = {
-  facil:   { name: 'Fácil',   income: 0.75, buildSpeed: 0.8, firstWave: 480, waveGap: 240, waveStart: 4, waveGrow: 1, waveMax: 12, maxHarvesters: 3, factories: 1, keepHome: 0.4, artillery: false, waveShare: 0.4 },
+  facil:   { name: 'Easy',   income: 0.75, buildSpeed: 0.8, firstWave: 480, waveGap: 240, waveStart: 4, waveGrow: 1, waveMax: 12, maxHarvesters: 3, factories: 1, keepHome: 0.4, artillery: false, waveShare: 0.4 },
   normal:  { name: 'Normal',  income: 0.95, buildSpeed: 1.0, firstWave: 330, waveGap: 170, waveStart: 7, waveGrow: 2, waveMax: 18, maxHarvesters: 5, factories: 2, keepHome: 0.2, raids: true, waveShare: 0.75 },
-  dificil: { name: 'Difícil', income: 1.1,  buildSpeed: 1.0, firstWave: 300, waveGap: 160, waveStart: 7, waveGrow: 2, waveMax: 20, maxHarvesters: 6, factories: 2, keepHome: 0.3,  raids: true, waveShare: 0.6 },
+  dificil: { name: 'Hard', income: 1.1,  buildSpeed: 1.0, firstWave: 300, waveGap: 160, waveStart: 7, waveGrow: 2, waveMax: 20, maxHarvesters: 6, factories: 2, keepHome: 0.3,  raids: true, waveShare: 0.6 },
 };
 
 // Facção de cada time, definida no início da partida (0 = jogador, 1 = inimigo)

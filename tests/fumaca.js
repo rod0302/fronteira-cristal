@@ -117,6 +117,9 @@ function check(ok, msg) {
   await ev(() => __jogo.pausar(true));
   if (!fala) console.log(await ev(() => JSON.stringify({ falas: __jogo.falas, h: units.filter(u => u.type === 'harvester' && u.team === 0).map(u => u.hstate), fase: gameState, t: gameTime })));
   check(!!fala && fala.via !== 'mudo', 'locutor anunciou "Harvester deployed" (' + (fala ? fala.via : 'nada') + ')');
+  // Sem fala dupla: o Coletor só tem "Harvester deployed" (a antiga "Coletor pronto" saiu)
+  check(await ev(() => !__jogo.falas.some(f => f.key.startsWith('unidade_harvester')) && !Object.keys(VOICE_PACK).some(k => k.startsWith('unidade_harvester'))),
+    'Coletor sem fala duplicada de "pronto"');
   check(await ev(() => voicePackState === 'pronto' && Object.keys(VOICE_BUF).length === Object.keys(VOICE_PACK).length),
     'pacote de vozes decodificado (' + await ev(() => Object.keys(VOICE_BUF).length) + ' falas)');
   // O banco é gravado em segundo plano: espera até 40 s (máquina carregada)

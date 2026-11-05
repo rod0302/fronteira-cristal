@@ -188,15 +188,15 @@ function drawSidebar(ctx) {
   ctx.moveTo(x0 + 18, 7); ctx.lineTo(x0 + 12, 17); ctx.lineTo(x0 + 17, 17);
   ctx.closePath();
   ctx.fill();
-  text(ctx, Math.floor(t.credits).toLocaleString('pt-BR'), x0 + 32, 17, 19, '#bff8ef', '700');
-  text(ctx, 'créditos', x0 + SIDEBAR_W - 10, 18, 11, TEXT_DIM, '', 'right');
+  text(ctx, Math.floor(t.credits).toLocaleString('en-US'), x0 + 32, 17, 19, '#bff8ef', '700');
+  text(ctx, 'credits', x0 + SIDEBAR_W - 10, 18, 11, TEXT_DIM, '', 'right');
 
   drawMinimap(ctx);
 
   // Energia: barra de consumo sobre a geração
   const py = 34 + minimapSize() + 10;
   const low = t.powerUse > t.powerOut;
-  text(ctx, 'Energia', x0 + 10, py + 2, 11, TEXT_DIM);
+  text(ctx, 'Power', x0 + 10, py + 2, 11, TEXT_DIM);
   text(ctx, t.powerUse + ' / ' + t.powerOut, x0 + SIDEBAR_W - 10, py + 2, 11, low ? '#ff7a6a' : '#9be36b', 'bold', 'right');
   const bw = SIDEBAR_W - 20;
   rrect(ctx, x0 + 10, py + 9, bw, 9, 4.5);
@@ -217,11 +217,11 @@ function drawSidebar(ctx) {
     ctx.fill();
   }
   addHit(x0 + 10, py - 4, bw, 22, 'tip', null,
-    'Energia: consumo / geração. Se o consumo passar da geração, a produção cai pela metade, as torres atiram devagar e o radar desliga. Construa Usinas.');
+    'Power: usage / output. If usage exceeds output, production drops by half, turrets fire slowly and the radar shuts down. Build Power Plants.');
 
   // Cabeçalhos das colunas
-  text(ctx, 'PRÉDIOS', x0 + 58, top - 9, 10, TEXT_DIM, '700', 'center');
-  text(ctx, 'UNIDADES', x0 + 162, top - 9, 10, TEXT_DIM, '700', 'center');
+  text(ctx, 'BUILDINGS', x0 + 58, top - 9, 10, TEXT_DIM, '700', 'center');
+  text(ctx, 'UNITS', x0 + 162, top - 9, 10, TEXT_DIM, '700', 'center');
 
   BUILD_MENU.forEach((type, i) => drawBuildButton(ctx, type, x0 + 8, top + i * (rowH + 4), 100, rowH));
   UNIT_MENU.forEach((type, i) => drawUnitButton(ctx, type, x0 + 112, top + i * (rowH + 4), 100, rowH));
@@ -260,7 +260,7 @@ function drawProductionButton(ctx, x, y, w, h, kind, type, state) {
     ctx.restore();
     // Na linha do preço, à direita (não cobre o nome)
     // Parado por falta de créditos: o aviso ocupa a linha do preço inteira (sem sobrepor números)
-    if (state.waiting) text(ctx, 'sem créditos', x + icon + 6, y + h / 2 + 8, 10, '#ff9a7a', '700');
+    if (state.waiting) text(ctx, 'no credits', x + icon + 6, y + h / 2 + 8, 10, '#ff9a7a', '700');
     else text(ctx, Math.floor(state.progress * 100) + '%', x + w - 5, y + h / 2 + 8, 10, '#d8fff8', '700', 'right');
   }
   if (state.ready) {
@@ -268,7 +268,7 @@ function drawProductionButton(ctx, x, y, w, h, kind, type, state) {
     ctx.fillStyle = `rgba(125,255,122,${pulse})`;
     rrect(ctx, x, y, w, h, 5);
     ctx.fill();
-    text(ctx, 'PRONTO', x + icon + 6, y + h / 2 + 8, 11, '#e0ffe0', '800');
+    text(ctx, 'READY', x + icon + 6, y + h / 2 + 8, 11, '#e0ffe0', '800');
   }
   if (state.count > 1) {
     rrect(ctx, x + w - 22, y + 2, 20, 14, 4);
@@ -306,9 +306,9 @@ function drawUnitButton(ctx, type, x, y, w, h) {
 
 // Motivo de não poder começar um prédio agora (ignorando "já tem outro em obra")
 function buildReason(type) {
-  if (!hasBuilding(0, 'hq')) return 'Sem Central';
+  if (!hasBuilding(0, 'hq')) return 'No Headquarters';
   const miss = missingReq(0, BUILDING_TYPES[type]);
-  return miss ? 'Requer ' + BUILDING_TYPES[miss].name : null;
+  return miss ? 'Requires ' + BUILDING_TYPES[miss].name : null;
 }
 
 // Painel de informações da seleção (embaixo dos botões)
@@ -334,20 +334,20 @@ function drawInfoContent(ctx, x, y, w, h) {
     text(ctx, def.name, x, y + 12, 13, TEXT, 'bold');
     drawHealthBar(ctx, x, y + 24, w, selB.hp / selB.maxHp);
     text(ctx, Math.ceil(selB.hp) + '/' + selB.maxHp, x + w, y + 12, 10, TEXT_DIM, '', 'right');
-    let info = def.power > 0 ? 'Gera ' + def.power + ' de energia' : def.power < 0 ? 'Consome ' + (-def.power) + ' de energia' : '';
-    if (selB.type === 'factory' || selB.type === 'barracks') info = 'Botão direito no mapa: encontro';
-    if (selB.queue.length) info = 'Fila: ' + UNIT_TYPES[selB.queue[0].type].name + (selB.queue.length > 1 ? ' +' + (selB.queue.length - 1) : '');
+    let info = def.power > 0 ? 'Generates ' + def.power + ' power' : def.power < 0 ? 'Uses ' + (-def.power) + ' power' : '';
+    if (selB.type === 'factory' || selB.type === 'barracks') info = 'Right-click on map: rally point';
+    if (selB.queue.length) info = 'Queue: ' + UNIT_TYPES[selB.queue[0].type].name + (selB.queue.length > 1 ? ' +' + (selB.queue.length - 1) : '');
     text(ctx, info, x, y + 37, 11, TEXT_DIM);
     if (selB.team === 0 && y + 62 < camera.h) {
       const bw = (w - 6) / 2;
-      button(ctx, x, y + 60, bw, 22, selB.repairing ? 'Parar' : 'Reparar', 'repair', selB.id,
-        { size: 11, active: selB.repairing, tip: 'Reparar (R): recupera a vida aos poucos, gastando créditos.' });
+      button(ctx, x, y + 60, bw, 22, selB.repairing ? 'Stop' : 'Repair', 'repair', selB.id,
+        { size: 11, active: selB.repairing, tip: 'Repair (R): restores health gradually, spending credits.' });
       if (def.noSell) {
-        text(ctx, 'não pode ser vendida', x + bw + 6 + bw / 2, y + 71, 10, TEXT_DIM, '', 'center');
+        text(ctx, "can't be sold", x + bw + 6 + bw / 2, y + 71, 10, TEXT_DIM, '', 'center');
       } else {
         const armed = selB.sellArmed && performance.now() - selB.sellArmed < 3000;
-        button(ctx, x + bw + 6, y + 60, bw, 22, armed ? 'Confirmar?' : 'Vender', 'sell', selB.id,
-          { size: 11, color: armed ? '#ff9a7a' : TEXT, tip: 'Vender: devolve metade do preço (proporcional à vida). Clique duas vezes (ou V duas vezes) para confirmar.' });
+        button(ctx, x + bw + 6, y + 60, bw, 22, armed ? 'Confirm?' : 'Sell', 'sell', selB.id,
+          { size: 11, color: armed ? '#ff9a7a' : TEXT, tip: 'Sell: refunds half the price (scaled by health). Click twice (or press V twice) to confirm.' });
       }
     }
     return;
@@ -359,11 +359,11 @@ function drawInfoContent(ctx, x, y, w, h) {
     text(ctx, Math.ceil(u.hp) + '/' + u.maxHp, x + w, y + 12, 10, TEXT_DIM, '', 'right');
     drawHealthBar(ctx, x, y + 24, w, u.hp / u.maxHp);
     if (u.type === 'harvester') {
-      const states = { idle: 'procurando cristal', toField: 'indo ao campo', harvest: 'colhendo', toRefinery: 'voltando à refinaria', unload: 'descarregando' };
-      text(ctx, 'Carga ' + Math.floor(u.cargo) + '/' + def.capacity, x, y + 38, 10, ACCENT);
-      text(ctx, u.manual ? 'parado (volta a colher em 3 s)' : states[u.hstate], x, y + 52, 10, TEXT_DIM);
+      const states = { idle: 'looking for crystal', toField: 'heading to the field', harvest: 'harvesting', toRefinery: 'returning to refinery', unload: 'unloading' };
+      text(ctx, 'Cargo ' + Math.floor(u.cargo) + '/' + def.capacity, x, y + 38, 10, ACCENT);
+      text(ctx, u.manual ? 'stopped (resumes harvesting in 3 s)' : states[u.hstate], x, y + 52, 10, TEXT_DIM);
     } else {
-      const status = u.target ? 'atacando' : u.amove ? 'atacando-movendo' : u.path.length ? 'em movimento' : 'parado';
+      const status = u.target ? 'attacking' : u.amove ? 'attack-moving' : u.path.length ? 'moving' : 'idle';
       text(ctx, status, x, y + 38, 10, TEXT_DIM);
       orderButtons(ctx, x, y + 48, w);
       wrapText(ctx, def.desc, x, y + 84, w, 12, 10, TEXT_DIM);
@@ -371,7 +371,7 @@ function drawInfoContent(ctx, x, y, w, h) {
     return;
   }
   if (selU.length > 1) {
-    text(ctx, selU.length + ' unidades', x, y + 12, 13, TEXT, 'bold');
+    text(ctx, selU.length + ' units', x, y + 12, 13, TEXT, 'bold');
     const counts = {};
     selU.forEach(u => { counts[u.type] = (counts[u.type] || 0) + 1; });
     let cx = x;
@@ -389,21 +389,21 @@ function drawInfoContent(ctx, x, y, w, h) {
     text(ctx, def.name, x, y + 12, 13, '#ff9a7a', 'bold');
     text(ctx, Math.ceil(inspected.hp) + '/' + inspected.maxHp, x + w, y + 12, 10, TEXT_DIM, '', 'right');
     drawHealthBar(ctx, x, y + 24, w, inspected.hp / inspected.maxHp);
-    text(ctx, 'Inimigo (' + TEAMS[inspected.team].name + ')', x, y + 38, 10, TEXT_DIM);
+    text(ctx, 'Enemy (' + TEAMS[inspected.team].name + ')', x, y + 38, 10, TEXT_DIM);
     wrapText(ctx, def.desc, x, y + 54, w, 12, 10, TEXT_DIM);
     return;
   }
-  text(ctx, 'Objetivo', x, y + 12, 11, TEXT_DIM, 'bold');
+  text(ctx, 'Objective', x, y + 12, 11, TEXT_DIM, 'bold');
   wrapText(ctx, currentGoal(), x, y + 28, w, 13, 11, TEXT);
 }
 
 // Botões de ordem para as unidades selecionadas (os mesmos das teclas A e S)
 function orderButtons(ctx, x, y, w) {
   const bw = (w - 6) / 2;
-  button(ctx, x, y, bw + 20, 22, 'Atacar (A)', 'amove', null,
-    { size: 11, active: input.mode === 'amove', tip: 'Atacar-movendo (A): clique no destino (mapa ou minimapa). O grupo anda junto e luta com o que encontrar.' });
-  button(ctx, x + bw + 26, y, bw - 20, 22, 'Parar (S)', 'stop', null,
-    { size: 11, tip: 'Parar (S): larga o caminho e o alvo.' });
+  button(ctx, x, y, bw + 20, 22, 'Attack (A)', 'amove', null,
+    { size: 11, active: input.mode === 'amove', tip: 'Attack-move (A): click the destination (map or minimap). The group moves together and fights whatever it meets.' });
+  button(ctx, x + bw + 26, y, bw - 20, 22, 'Stop (S)', 'stop', null,
+    { size: 11, tip: 'Stop (S): drops the current path and target.' });
 }
 
 function wrapText(ctx, str, x, y, maxW, lineH, size, color) {
@@ -427,34 +427,34 @@ function wrapText(ctx, str, x, y, maxW, lineH, size, color) {
 // Próximo passo sugerido ao jogador
 function currentGoal() {
   const t = teams[0];
-  if (!hasBuilding(0, 'hq')) return 'Sem Central não dá para construir. Lute com o exército que restou.';
-  if (t.construct && t.construct.ready) return 'Clique no botão PRONTO e depois num lugar verde do planalto cinza para colocar o prédio.';
+  if (!hasBuilding(0, 'hq')) return 'Without Headquarters you cannot build. Fight on with the army you have left.';
+  if (t.construct && t.construct.ready) return 'Click the READY button, then a green spot on the gray plateau to place the building.';
   const goal = nextGoal();
   // O prédio sugerido já está em obra: diga isso, para o jogador não achar que o clique falhou
   if (goal.build && t.construct && t.construct.type === goal.build) {
     const name = BUILDING_TYPES[goal.build].name;
     const def = BUILDING_TYPES[goal.build];
-    if (t.construct.waiting) return name + ' ' + genderize(def, 'parad') + ': sem créditos. Espere os Coletores trazerem cristal.';
-    return name + ' em construção (' + Math.floor(t.construct.progress * 100) + '%).';
+    if (t.construct.waiting) return name + ' paused: no credits. Wait for the Harvesters to bring crystal.';
+    return name + ' under construction (' + Math.floor(t.construct.progress * 100) + '%).';
   }
   return goal.text;
 }
 
 function nextGoal() {
   const has = type => hasBuilding(0, type);
-  if (!has('power')) return { build: 'power', text: 'Construa uma Usina: clique nela no painel PRÉDIOS. Ela gera energia para a base.' };
-  if (lowPower(0)) return { build: 'power', text: 'Energia insuficiente! Construa mais Usinas.' };
-  if (!has('refinery')) return { build: 'refinery', text: 'Construa uma Refinaria. Ela traz um Coletor que colhe cristal (o dinheiro do jogo).' };
-  if (!has('barracks')) return { build: 'barracks', text: 'Construa um Quartel para treinar soldados e liberar a Torre de defesa.' };
-  if (!has('factory')) return { build: 'factory', text: 'Construa uma Fábrica para produzir blindados e Coletores.' };
+  if (!has('power')) return { build: 'power', text: 'Build a Power Plant: click it in the BUILDINGS panel. It powers the base.' };
+  if (lowPower(0)) return { build: 'power', text: 'Not enough power! Build more Power Plants.' };
+  if (!has('refinery')) return { build: 'refinery', text: 'Build a Refinery. It comes with a Harvester that gathers crystal (the game\'s money).' };
+  if (!has('barracks')) return { build: 'barracks', text: 'Build Barracks to train infantry and unlock the defense Turret.' };
+  if (!has('factory')) return { build: 'factory', text: 'Build a Factory to produce tanks and Harvesters.' };
   const harvesters = units.filter(u => u.team === 0 && u.type === 'harvester').length + queuedCount(0, 'harvester');
-  if (harvesters < 2) return { text: 'Compre um segundo Coletor na Fábrica: dobra a renda de cristal.' };
-  if (teamBuildings(0, 'refinery').length < 2) return { build: 'refinery', text: 'Construa uma 2ª Refinaria (vem com mais um Coletor). Quem colhe mais, monta o exército maior.' };
-  if (harvesters < 4) return { text: 'Tenha 4 Coletores (compre na Fábrica). O inimigo também colhe com vários.' };
-  if (!has('radar')) return { build: 'radar', text: 'Construa um Radar para ver inimigos no minimapa e liberar o Obuseiro.' };
+  if (harvesters < 2) return { text: 'Buy a second Harvester at the Factory: it doubles your crystal income.' };
+  if (teamBuildings(0, 'refinery').length < 2) return { build: 'refinery', text: 'Build a 2nd Refinery (it brings another Harvester). Whoever harvests more fields the bigger army.' };
+  if (harvesters < 4) return { text: 'Get 4 Harvesters (buy them at the Factory). The enemy harvests with several too.' };
+  if (!has('radar')) return { build: 'radar', text: 'Build a Radar to see enemies on the minimap and unlock the Howitzer.' };
   const army = units.filter(u => u.team === 0 && hasWeapon(u)).length;
-  if (army < 15) return { text: 'Monte um exército misto (Blindados e Foguetes, uns Soldados): ' + army + '/15. Até lá, defenda perto das Torres.' };
-  return { text: 'Exército pronto: selecione e ataque com A + clique (o grupo anda junto). A base inimiga fica no canto oposto. Mantenha a produção.' };
+  if (army < 15) return { text: 'Build a mixed army (Tanks and Rocketeers, a few Troopers): ' + army + '/15. Until then, defend near your Turrets.' };
+  return { text: 'Army ready: select it and attack with A + click (the group moves together). The enemy base is in the opposite corner. Keep production going.' };
 }
 
 // Caixa de dica perto do mouse
@@ -464,21 +464,21 @@ function drawTooltip(ctx) {
   const a = uiHover.act, type = uiHover.arg;
   if (a === 'build') {
     const def = BUILDING_TYPES[type];
-    lines = [def.name, '◆' + costOf(0, def) + '   ' + def.build + ' s   ' + (def.power > 0 ? '+' : '') + def.power + ' energia', def.desc];
+    lines = [def.name, '◆' + costOf(0, def) + '   ' + def.build + ' s   ' + (def.power > 0 ? '+' : '') + def.power + ' power', def.desc];
     const why = buildReason(type);
     if (why) lines.push('⚠ ' + why);
     const c = teams[0].construct;
-    if (c && c.type === type) lines.push(c.ready ? 'Clique para posicionar. Botão direito: cancelar.' : c.waiting ? '⚠ Parado: sem créditos. Botão direito: cancelar.' : 'Em construção. Botão direito: cancelar.');
-    else if (c) lines.push('Espere a construção atual terminar.');
-    else lines.push('Clique para construir.');
+    if (c && c.type === type) lines.push(c.ready ? 'Click to place. Right-click: cancel.' : c.waiting ? '⚠ Paused: no credits. Right-click: cancel.' : 'Under construction. Right-click: cancel.');
+    else if (c) lines.push('Wait for the current construction to finish.');
+    else lines.push('Click to build.');
   } else if (a === 'unit') {
     const def = UNIT_TYPES[type];
-    lines = [def.name, '◆' + costOf(0, def) + '   ' + def.build + ' s   vida ' + def.hp, def.desc];
+    lines = [def.name, '◆' + costOf(0, def) + '   ' + def.build + ' s   health ' + def.hp, def.desc];
     const why = unitBlockReason(0, type);
     const item = activeItem(0, type);
     if (why) lines.push('⚠ ' + why);
-    else if (item && item.waiting) lines.push('⚠ Parado: sem créditos. Botão direito: tirar da fila.');
-    else lines.push('Clique: pôr na fila. Botão direito: tirar da fila.');
+    else if (item && item.waiting) lines.push('⚠ Paused: no credits. Right-click: remove from queue.');
+    else lines.push('Click: add to queue. Right-click: remove from queue.');
   } else if (uiHover.tip) {
     lines = [uiHover.tip];
   }
@@ -534,10 +534,10 @@ function drawHud(ctx) {
   text(ctx, f.name, 26, HUD_H / 2, 13, TEXT, '700');
   text(ctx, formatTime(gameTime), 200, HUD_H / 2, 13, TEXT_DIM, '600');
   if (lowPower(0) && Math.floor(performance.now() / 500) % 2) {
-    text(ctx, '⚡ ENERGIA BAIXA', 270, HUD_H / 2, 13, '#ff7a6a', '800');
+    text(ctx, '⚡ LOW POWER', 270, HUD_H / 2, 13, '#ff7a6a', '800');
   }
   if (camera.w > 900) {
-    text(ctx, (muted ? '🔇 ' : '') + 'P: pausa e ajuda   A: atacar-movendo   S: parar   H: base',
+    text(ctx, (muted ? '🔇 ' : '') + 'P: pause & help   A: attack-move   S: stop   H: base',
       camera.w - 10, HUD_H / 2, 11, TEXT_DIM, '', 'right');
   }
 }
@@ -557,7 +557,7 @@ function drawMessages(ctx) {
 
 function drawGoalLine(ctx) {
   ctx.font = '12px ' + UI_FONT;
-  const goal = 'Objetivo: ' + currentGoal();
+  const goal = 'Objective: ' + currentGoal();
   const gw = Math.min(camera.w - 16, ctx.measureText(goal).width + 16);
   rrect(ctx, 8, HUD_H + 6, gw, 20, 4);
   ctx.fillStyle = 'rgba(6,10,14,0.6)';
@@ -640,23 +640,23 @@ function drawLogo(ctx, cx, y, size) {
   ctx.textBaseline = 'middle';
   ctx.shadowColor = 'rgba(79,214,196,0.55)';
   ctx.shadowBlur = 18;
-  const tw = ctx.measureText('FRONTEIRA CRISTAL').width;
+  const tw = ctx.measureText('CRYSTAL FRONTIER').width;
   const sweep = cx - tw / 2 + ((t * 0.25) % 1.6) * tw - tw * 0.3;
   const tg = ctx.createLinearGradient(sweep - 60, 0, sweep + 60, 0);
   tg.addColorStop(0, '#e8e2d0');
   tg.addColorStop(0.5, '#ffffff');
   tg.addColorStop(1, '#e8e2d0');
   ctx.fillStyle = tg;
-  ctx.fillText('FRONTEIRA CRISTAL', cx, y + size * 0.55);
+  ctx.fillText('CRYSTAL FRONTIER', cx, y + size * 0.55);
   ctx.restore();
 }
 
 const CONTROLS_HELP = [
-  'Clique esquerdo: selecionar  ·  arrastar: seleção em caixa',
-  'Clique direito: mover (atira no caminho) · sobre inimigo: atacar · cristal: colher',
-  'A + clique (ou minimapa): atacar-movendo, para e luta  ·  S: parar  ·  H: base  ·  Espaço: último alerta',
-  'Ctrl+1..9: criar grupo  ·  1..9: chamar grupo (2x centraliza)',
-  'Setas ou mouse na borda: câmera  ·  M: som  ·  N: música  ·  P/Esc: pausa  ·  F9: gráficos',
+  'Left-click: select  ·  drag: box select',
+  'Right-click: move (fires on the way) · on enemy: attack · on crystal: harvest',
+  'A + click (or minimap): attack-move, stops and fights  ·  S: stop  ·  H: base  ·  Space: last alert',
+  'Ctrl+1..9: create group  ·  1..9: select group (twice to center)',
+  'Arrows or mouse at edge: camera  ·  M: sound  ·  N: music  ·  P/Esc: pause  ·  F9: graphics',
 ];
 
 function drawTitle(ctx) {
@@ -680,10 +680,10 @@ function drawTitle(ctx) {
   drawLogo(ctx, cx, y, compact ? 28 : 40);
   y += compact ? 30 : 46;
   if (!compact) {
-    text(ctx, 'Colha cristal, erga sua base e destrua o inimigo.', cx, y, 14, TEXT_DIM, '', 'center');
+    text(ctx, 'Harvest crystal, raise your base and destroy the enemy.', cx, y, 14, TEXT_DIM, '', 'center');
     y += 32;
   }
-  text(ctx, 'ESCOLHA SUA FACÇÃO', cx, y, 12, TEXT_DIM, 'bold', 'center');
+  text(ctx, 'CHOOSE YOUR FACTION', cx, y, 12, TEXT_DIM, 'bold', 'center');
   y += 16;
   const cardW = Math.min(220, (W - 60) / 3), cardH = 84, gap = 12;
   const x0 = cx - (cardW * 3 + gap * 2) / 2;
@@ -712,16 +712,16 @@ function drawTitle(ctx) {
     items.forEach((it, i) => button(ctx, rowX + i * (bw + 10), y, bw, 30, it.label, it.act, it.arg, { active: it.active, size: 13 }));
   };
   y += cardH - 30;
-  optionRow('INIMIGO', FACTIONS.map((f, i) => i).filter(i => i !== gameOptions.faction).map(i => ({
+  optionRow('ENEMY', FACTIONS.map((f, i) => i).filter(i => i !== gameOptions.faction).map(i => ({
     label: FACTIONS[i].name, act: 'enemy', arg: i, active: enemyFaction() === i,
   })));
-  optionRow('DIFICULDADE', Object.keys(DIFFICULTIES).map(k => ({
+  optionRow('DIFFICULTY', Object.keys(DIFFICULTIES).map(k => ({
     label: DIFFICULTIES[k].name, act: 'diff', arg: k, active: gameOptions.difficulty === k,
   })));
-  optionRow('MAPA', MAPS.map((m, i) => ({ label: m.name, act: 'map', arg: i, active: gameOptions.map === i })));
+  optionRow('MAP', MAPS.map((m, i) => ({ label: m.name, act: 'map', arg: i, active: gameOptions.map === i })));
 
   y += 52;
-  button(ctx, cx - 110, y, 220, 44, 'JOGAR', 'start', null, { size: 19, color: '#eaffea', primary: true });
+  button(ctx, cx - 110, y, 220, 44, 'PLAY', 'start', null, { size: 19, color: '#eaffea', primary: true });
   graphicsButton(ctx, cx + 126, y + 7, 150, 30);
 
   y += 66;
@@ -734,20 +734,20 @@ function drawPause(ctx) {
   const cx = W / 2;
   let y = H * 0.22;
   panel(ctx, cx - 330, y - 40, 660, Math.min(H - y + 20, 470), { r: 12, top: 'rgba(24,30,38,0.88)', bottom: 'rgba(10,13,17,0.9)' });
-  text(ctx, 'PAUSADO', cx, y, 30, TEXT, '800', 'center');
+  text(ctx, 'PAUSED', cx, y, 30, TEXT, '800', 'center');
   y += 50;
-  button(ctx, cx - 110, y, 220, 38, 'Continuar', 'resume');
-  button(ctx, cx - 110, y + 48, 220, 38, 'Reiniciar partida', 'restart');
-  button(ctx, cx - 110, y + 96, 220, 38, 'Menu principal', 'menu');
+  button(ctx, cx - 110, y, 220, 38, 'Resume', 'resume');
+  button(ctx, cx - 110, y + 48, 220, 38, 'Restart match', 'restart');
+  button(ctx, cx - 110, y + 96, 220, 38, 'Main menu', 'menu');
   graphicsButton(ctx, cx + 126, y + 4, 150, 30);
   y += 170;
-  text(ctx, 'CONTROLES', cx, y, 12, TEXT_DIM, 'bold', 'center');
+  text(ctx, 'CONTROLS', cx, y, 12, TEXT_DIM, 'bold', 'center');
   CONTROLS_HELP.forEach((l, i) => text(ctx, l, cx, y + 24 + i * 18, 11, TEXT, '', 'center'));
   y += 24 + CONTROLS_HELP.length * 18 + 16;
   [
-    'Dinheiro vem do cristal: a Refinaria traz um Coletor, que colhe sozinho.',
-    'Prédios só no planalto de pedra cinza, perto da sua base.',
-    'Soldados vencem soldados; blindados vencem veículos; obuseiros destroem bases de longe.',
+    'Money comes from crystal: the Refinery brings a Harvester that gathers on its own.',
+    'Buildings go only on the gray stone plateau, near your base.',
+    'Troopers beat troopers; tanks beat vehicles; howitzers wreck bases from afar.',
   ].forEach((l, i) => text(ctx, l, cx, y + i * 18, 11, TEXT_DIM, '', 'center'));
 }
 
@@ -761,17 +761,17 @@ function drawEnd(ctx) {
   ctx.save();
   ctx.shadowColor = won ? 'rgba(155,227,107,0.8)' : 'rgba(255,122,106,0.8)';
   ctx.shadowBlur = 22;
-  text(ctx, won ? 'VITÓRIA' : 'DERROTA', cx, y, 40, won ? '#b6f08a' : '#ff8a7a', '800', 'center');
+  text(ctx, won ? 'VICTORY' : 'DEFEAT', cx, y, 40, won ? '#b6f08a' : '#ff8a7a', '800', 'center');
   ctx.restore();
   y += 40;
-  text(ctx, won ? 'A base inimiga caiu. A fronteira é sua.' : 'Sua base foi destruída.', cx, y, 14, TEXT_DIM, '', 'center');
+  text(ctx, won ? 'The enemy base has fallen. The frontier is yours.' : 'Your base was destroyed.', cx, y, 14, TEXT_DIM, '', 'center');
   y += 30;
-  text(ctx, 'Tempo de partida: ' + formatTime(gameTime), cx, y, 12, TEXT, '', 'center');
+  text(ctx, 'Match time: ' + formatTime(gameTime), cx, y, 12, TEXT, '', 'center');
   y += 34;
   const cols = [cx - 150, cx + 40, cx + 150];
   text(ctx, TEAMS[0].name, cols[1], y, 12, TEAMS[0].light, 'bold', 'center');
   text(ctx, TEAMS[1].name, cols[2], y, 12, TEAMS[1].light, 'bold', 'center');
-  const rows = [['Produzidos', 'built'], ['Perdidos', 'lost'], ['Destruídos', 'killed'], ['Cristal colhido', 'harvested']];
+  const rows = [['Produced', 'built'], ['Lost', 'lost'], ['Destroyed', 'killed'], ['Crystal harvested', 'harvested']];
   rows.forEach(([label, key], i) => {
     const yy = y + 24 + i * 22;
     text(ctx, label, cols[0], yy, 12, TEXT_DIM);
@@ -781,18 +781,18 @@ function drawEnd(ctx) {
   y += 24 + rows.length * 22 + 24;
   // Telas baixas: os dois botões lado a lado
   if (y + 90 > H) {
-    button(ctx, cx - 230, y, 220, 40, 'Jogar de novo', 'restart');
-    button(ctx, cx + 10, y, 220, 40, 'Menu principal', 'menu');
+    button(ctx, cx - 230, y, 220, 40, 'Play again', 'restart');
+    button(ctx, cx + 10, y, 220, 40, 'Main menu', 'menu');
   } else {
-    button(ctx, cx - 110, y, 220, 40, 'Jogar de novo', 'restart');
-    button(ctx, cx - 110, y + 50, 220, 40, 'Menu principal', 'menu');
+    button(ctx, cx - 110, y, 220, 40, 'Play again', 'restart');
+    button(ctx, cx - 110, y + 50, 220, 40, 'Main menu', 'menu');
   }
 }
 
 // Botão do modo gráfico (Premium / Clássico / Leve)
 function graphicsButton(ctx, x, y, w, h) {
-  const name = typeof GRAPHICS_NAMES !== 'undefined' ? GRAPHICS_NAMES[graphicsMode] : 'Clássico';
-  button(ctx, x, y, w, h, 'Gráficos: ' + name, 'graphics', null, { size: 12 });
+  const name = typeof GRAPHICS_NAMES !== 'undefined' ? GRAPHICS_NAMES[graphicsMode] : 'Classic';
+  button(ctx, x, y, w, h, 'Graphics: ' + name, 'graphics', null, { size: 12 });
 }
 
 // Desenha toda a interface por cima do mundo
@@ -819,13 +819,13 @@ function trySell(b) {
   if (!b || b.team !== 0 || BUILDING_TYPES[b.type].noSell) return;
   if (!b.sellArmed || performance.now() - b.sellArmed > 3000) {
     b.sellArmed = performance.now();
-    notify('Vender ' + BUILDING_TYPES[b.type].name + '? Repita para confirmar.', '#ff9a7a');
+    notify('Sell ' + BUILDING_TYPES[b.type].name + '? Repeat to confirm.', '#ff9a7a');
     sfx('click');
     return;
   }
   if (sellBuilding(b)) {
     const def = BUILDING_TYPES[b.type];
-    notify(def.name + ' ' + genderize(def, 'vendid'));
+    notify(def.name + ' sold');
     sfx('click');
   }
 }
@@ -838,7 +838,7 @@ function checkBrokeWarning() {
     buildings.some(b => b.team === 0 && b.queue.length && b.queue[0].waiting);
   if (!waiting || gameTime - lastBrokeWarning < 60) return;
   lastBrokeWarning = gameTime;
-  notify('Sem créditos: a produção está parada. Mais Coletores e Refinarias aumentam a renda.', '#ffcf6a');
+  notify('Out of credits: production has stopped. More Harvesters and Refineries raise income.', '#ffcf6a');
 }
 
 // Clique numa área da interface. Devolve true se tratou o clique.
@@ -866,7 +866,7 @@ function uiClick(mx, my, button) {
         if (c && c.type === h.arg) {
           cancelConstruction(0);
           input.mode = null;
-          notify('Construção cancelada');
+          notify('Construction canceled');
         }
         break;
       }
@@ -878,13 +878,13 @@ function uiClick(mx, my, button) {
         notify(reason, '#ff9a7a');
         sfx('error');
       } else if (c && c.ready) {
-        notify('Primeiro posicione ' + BUILDING_TYPES[c.type].name + ' (botão PRONTO)', '#ff9a7a');
+        notify('First place the ' + BUILDING_TYPES[c.type].name + ' (READY button)', '#ff9a7a');
         sfx('error');
       } else if (!c) {
         const why = startConstruction(0, h.arg);
         if (why) { notify(why, '#ff9a7a'); sfx('error'); } else { sfx('click'); announce('construindo'); }
       } else if (c.type !== h.arg) {
-        notify('Espere a construção atual terminar', '#ff9a7a');
+        notify('Wait for the current construction to finish', '#ff9a7a');
         sfx('error');
       }
       break;
@@ -895,7 +895,7 @@ function uiClick(mx, my, button) {
         break;
       }
       const why = queueUnit(0, h.arg);
-      if (why) { notify(why, '#ff9a7a'); sfx('error'); if (why.startsWith('Limite')) announce('limite'); }
+      if (why) { notify(why, '#ff9a7a'); sfx('error'); if (why.startsWith('Unit limit')) announce('limite'); }
       else { sfx('click'); announce('treinando'); }
       break;
     }

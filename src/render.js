@@ -548,7 +548,7 @@ function drawMinimap(ctx) {
     ctx.fillStyle = 'rgba(255,255,255,0.7)';
     ctx.font = '10px ' + UI_FONT;
     ctx.textBaseline = 'middle';
-    ctx.fillText('sem radar', r.x + 5, r.y + r.h - 8);
+    ctx.fillText('no radar', r.x + 5, r.y + r.h - 8);
   }
   ctx.strokeStyle = 'rgba(255,255,255,0.12)';
   ctx.strokeRect(r.x - 2.5, r.y - 2.5, r.w + 5, r.h + 5);

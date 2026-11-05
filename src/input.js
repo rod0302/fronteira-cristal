@@ -181,9 +181,9 @@ function onKeyDown(e) {
   } else if (e.code === 'Space') {
     if (lastAlertPos) centerCameraOn(lastAlertPos.x, lastAlertPos.y);
   } else if (e.code === 'KeyM') {
-    notify(toggleMute() ? 'Som desligado' : 'Som ligado');
+    notify(toggleMute() ? 'Sound off' : 'Sound on');
   } else if (e.code === 'KeyN') {
-    notify(toggleMusic() ? 'Música ligada' : 'Música desligada');
+    notify(toggleMusic() ? 'Music on' : 'Music off');
   } else if (e.code === 'KeyR') {
     const b = buildings.find(x => x.selected && x.team === 0);
     if (b) { b.repairing = !b.repairing; if (b.repairing) { sfx('repair', b.x, b.y); announce('reparando'); } }
@@ -194,7 +194,7 @@ function onKeyDown(e) {
       e.preventDefault();
       if (!sel.length) return; // sem seleção não apaga o grupo
       controlGroups[digit] = sel.map(u => u.id);
-      if (sel.length) notify('Grupo ' + digit + ': ' + sel.length + ' unidades');
+      if (sel.length) notify('Group ' + digit + ': ' + sel.length + ' units');
     } else {
       selectGroup(digit);
     }

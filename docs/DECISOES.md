@@ -196,3 +196,10 @@ Detalhe em `logs/rodada-3-correcoes.md`.
 - **Pedido do Rodrigo:** o que uma unidade já revelou não volta a ficar escondido quando ela sai dali. O terreno explorado agora fica à mostra para sempre, nos três modos (Clássico/Leve: véu de 34/255 em vez de 130; Premium: cor quase cheia, só 14% mais escura e levemente fria, em vez de cinza-azulado pela metade).
 - **O véu leve fica de propósito:** unidades inimigas e efeitos fora da visão atual continuam invisíveis (o jogador só mira no que vê, e a simulação não mudou); sem nenhuma marca, um tanque inimigo "sumiria" em terreno claro sem explicação.
 - Prédios inimigos já vistos continuam lembrados como antes.
+
+### Jogo todo em inglês, sem fala duplicada do Coletor (05/11/2026)
+- **Pedido do Rodrigo:** o Coletor dizia "Coletor pronto" e, segundos depois, "Harvester deployed", que significam a mesma coisa. Agora só existe **"Harvester deployed"**, quando o Coletor começa a colher pela primeira vez (da Refinaria ou da Fábrica). As chaves `unidade_harvester` e `unidade_harvester_v2` saíram do catálogo e do pacote.
+- **Tudo em inglês:** menus, painel, dicas, objetivos, avisos, nomes de unidades, prédios, facções e mapas, e todas as falas (locutora `af_heart`, infantaria `am_michael`, veículos e Coletor `am_fenrir`, todas en-us). O título na tela passou a **CRYSTAL FRONTIER**. As chaves internas das falas continuam em português (só identificadores).
+- **Textos originais**, escritos para este jogo; evitamos de propósito bordões conhecidos de outros jogos (ex.: "Construction finished", "Not enough credits", "We can't build there").
+- `genderize()` ficou neutro (em inglês o adjetivo não muda) e a voz de reserva do navegador usa sempre en-US.
+- Comentários do código e documentação continuam em português, como antes.

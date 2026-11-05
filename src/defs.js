@@ -27,37 +27,37 @@ const SHOTS = {
 // range/acquire em px; sight em tiles; cooldown e build em segundos
 const UNIT_TYPES = {
   trooper: {
-    name: 'Soldado', desc: 'Infantaria barata. Boa contra infantaria, fraca contra blindados.',
+    name: 'Trooper', desc: 'Cheap infantry. Good against infantry, weak against armor.',
     cost: 100, build: 6, from: 'barracks', armor: 'inf',
     speed: 36, turn: 12, radius: 6, hp: 70, sight: 5,
     range: 3 * TILE, acquire: 4.5 * TILE, cooldown: 0.7, damage: 8, shot: 'bullet',
   },
   rocketeer: {
-    name: 'Foguete', desc: 'Soldado com lança-foguetes. Forte contra blindados, fraco contra infantaria.',
+    name: 'Rocketeer', desc: 'Trooper with a rocket launcher. Strong against armor, weak against infantry.',
     cost: 180, build: 8, from: 'barracks', armor: 'inf',
     speed: 32, turn: 10, radius: 6, hp: 60, sight: 5,
     range: 4.5 * TILE, acquire: 5 * TILE, cooldown: 2.0, damage: 32, shot: 'rocket',
   },
   scout: {
-    name: 'Batedor', desc: 'Rápido e enxerga longe. Caça soldados e coletores.',
+    name: 'Scout', desc: 'Fast and sees far. Hunts troopers and harvesters.',
     cost: 250, build: 9, from: 'factory', armor: 'light',
     speed: 115, turn: 9, radius: 9, hp: 160, sight: 8,
     range: 3.5 * TILE, acquire: 5 * TILE, cooldown: 0.45, damage: 14, shot: 'bullet',
   },
   tank: {
-    name: 'Blindado', desc: 'Tanque de linha. Resistente e forte contra veículos.',
+    name: 'Tank', desc: 'Main battle tank. Tough and strong against vehicles.',
     cost: 700, build: 15, from: 'factory', armor: 'heavy',
     speed: 60, turn: 4, radius: 12, hp: 400, sight: 6,
     range: 4.5 * TILE, acquire: 5.5 * TILE, cooldown: 1.5, damage: 45, shot: 'shell', turretTurn: 5,
   },
   artillery: {
-    name: 'Obuseiro', desc: 'Artilharia de longo alcance com dano em área. Frágil de perto.',
+    name: 'Howitzer', desc: 'Long-range artillery with splash damage. Fragile up close.',
     cost: 800, build: 18, from: 'factory', req: ['radar'], armor: 'light',
     speed: 42, turn: 3, radius: 12, hp: 170, sight: 8,
     range: 8 * TILE, acquire: 8 * TILE, cooldown: 3.5, damage: 75, shot: 'arty', splash: 36,
   },
   harvester: {
-    name: 'Coletor', desc: 'Colhe cristal e leva até a Refinaria. Não tem arma.',
+    name: 'Harvester', desc: 'Gathers crystal and hauls it to the Refinery. Unarmed.',
     cost: 700, build: 15, from: 'factory', req: ['refinery'], armor: 'light',
     speed: 50, turn: 3.5, radius: 13, hp: 650, sight: 4,
     capacity: 500, harvestRate: 40, unloadRate: 160,
@@ -67,31 +67,31 @@ const UNIT_TYPES = {
 // w/h em tiles; power positivo gera, negativo consome; fem = nome feminino (para "pronta"/"destruída")
 const BUILDING_TYPES = {
   hq: {
-    name: 'Central', desc: 'Coração da base. Sem ela não se constrói nada.', repairBase: 1500,
+    name: 'Headquarters', desc: 'Heart of the base. Without it, nothing can be built.', repairBase: 1500,
     w: 3, h: 3, hp: 2000, power: 30, cost: 0, build: 0, sight: 7, buildable: false, fem: true, noSell: true,
   },
   power: {
-    name: 'Usina', desc: 'Gera 100 de energia. Sem energia suficiente, tudo fica lento.',
+    name: 'Power Plant', desc: 'Generates 100 power. Without enough power, everything slows down.',
     w: 2, h: 2, hp: 600, power: 100, cost: 300, build: 10, sight: 4, fem: true,
   },
   refinery: {
-    name: 'Refinaria', desc: 'Recebe o cristal dos coletores. Vem com um Coletor de graça.', sellBase: 300,
+    name: 'Refinery', desc: 'Receives crystal from harvesters. Comes with a free Harvester.', sellBase: 300,
     w: 3, h: 2, hp: 1000, power: -30, cost: 1000, build: 18, req: ['power'], sight: 5, fem: true,
   },
   barracks: {
-    name: 'Quartel', desc: 'Treina soldados. Libera a Torre.',
+    name: 'Barracks', desc: 'Trains infantry. Unlocks the Turret.',
     w: 2, h: 2, hp: 700, power: -20, cost: 350, build: 10, req: ['power'], sight: 5,
   },
   factory: {
-    name: 'Fábrica', desc: 'Produz veículos: batedor, blindado, obuseiro e coletor.',
+    name: 'Factory', desc: 'Builds vehicles: scout, tank, howitzer and harvester.',
     w: 3, h: 3, hp: 1200, power: -40, cost: 1000, build: 20, req: ['refinery'], sight: 5, fem: true,
   },
   radar: {
-    name: 'Radar', desc: 'Mostra inimigos no minimapa e libera o Obuseiro.',
+    name: 'Radar', desc: 'Shows enemies on the minimap and unlocks the Howitzer.',
     w: 2, h: 2, hp: 700, power: -40, cost: 700, build: 14, req: ['refinery'], sight: 9,
   },
   turret: {
-    name: 'Torre', desc: 'Defesa fixa com canhão. Sem energia, atira na metade da velocidade.',
+    name: 'Turret', desc: 'Fixed cannon defense. Without power, fires at half speed.',
     w: 1, h: 1, hp: 800, power: -25, cost: 500, build: 10, req: ['barracks'], sight: 7, fem: true,
     range: 6 * TILE, acquire: 6 * TILE, cooldown: 1.3, damage: 40, shot: 'shell', turretTurn: 4,
   },

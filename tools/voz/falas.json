@@ -1,5 +1,5 @@
 {
- "_comentario": "Catálogo das falas. chave -> [voz, idioma, texto, velocidade, fonemas opcionais (IPA, quando a pronúncia automática erra)]. Gerado por tools/voz/gerar.py.",
+ "_comentario": "Catálogo das falas. chave -> [voz, idioma, texto, velocidade, fonemas opcionais (IPA, quando a pronúncia automática erra)]. Gerado por tools/voz/gerar.py. Todas em inglês (pedido do Rodrigo, 05/11/2026).",
  "locutor": {
   "harvester_deployed": [
    "af_heart",
@@ -8,507 +8,491 @@
    0.95
   ],
   "inicio": [
-   "pf_dora",
-   "pt-br",
-   "Comandante, base operacional.",
+   "af_heart",
+   "en-us",
+   "Commander, base is operational.",
    1.0
   ],
   "construindo": [
-   "pf_dora",
-   "pt-br",
-   "Construindo.",
+   "af_heart",
+   "en-us",
+   "Building.",
    1.0
   ],
   "construcao_pronta": [
-   "pf_dora",
-   "pt-br",
-   "Construção concluída.",
+   "af_heart",
+   "en-us",
+   "Construction finished.",
    1.0
   ],
   "pronto_power": [
-   "pf_dora",
-   "pt-br",
-   "Usina pronta.",
+   "af_heart",
+   "en-us",
+   "Power plant ready.",
    1.0
   ],
   "pronto_refinery": [
-   "pf_dora",
-   "pt-br",
-   "Refinaria pronta.",
+   "af_heart",
+   "en-us",
+   "Refinery ready.",
    1.0
   ],
   "pronto_barracks": [
-   "pf_dora",
-   "pt-br",
-   "Quartel pronto.",
+   "af_heart",
+   "en-us",
+   "Barracks ready.",
    1.0
   ],
   "pronto_factory": [
-   "pf_dora",
-   "pt-br",
-   "Fábrica pronta.",
+   "af_heart",
+   "en-us",
+   "Factory ready.",
    1.0
   ],
   "pronto_radar": [
-   "pf_dora",
-   "pt-br",
-   "Radar pronto.",
-   1.0,
-   "hadˈaɾ prˈoŋtʊ."
+   "af_heart",
+   "en-us",
+   "Radar online.",
+   1.0
   ],
   "pronto_turret": [
-   "pf_dora",
-   "pt-br",
-   "Torre de defesa pronta.",
+   "af_heart",
+   "en-us",
+   "Defense turret ready.",
    1.0
   ],
   "local_invalido": [
-   "pf_dora",
-   "pt-br",
-   "Não é possível construir aqui.",
+   "af_heart",
+   "en-us",
+   "We can't build there.",
    1.05
   ],
   "sem_creditos": [
-   "pf_dora",
-   "pt-br",
-   "Créditos insuficientes.",
+   "af_heart",
+   "en-us",
+   "Not enough credits.",
    1.0
   ],
   "treinando": [
-   "pf_dora",
-   "pt-br",
-   "Treinando.",
+   "af_heart",
+   "en-us",
+   "Training.",
    1.0
   ],
   "unidade_trooper": [
-   "pf_dora",
-   "pt-br",
-   "Soldado pronto.",
+   "af_heart",
+   "en-us",
+   "Trooper ready.",
    1.0
   ],
   "unidade_rocketeer": [
-   "pf_dora",
-   "pt-br",
-   "Lança-foguetes pronto.",
+   "af_heart",
+   "en-us",
+   "Rocketeer ready.",
    1.0
   ],
   "unidade_scout": [
-   "pf_dora",
-   "pt-br",
-   "Batedor pronto.",
+   "af_heart",
+   "en-us",
+   "Scout ready.",
    1.0
   ],
   "unidade_tank": [
-   "pf_dora",
-   "pt-br",
-   "Blindado pronto.",
+   "af_heart",
+   "en-us",
+   "Tank ready.",
    1.0
   ],
   "unidade_artillery": [
-   "pf_dora",
-   "pt-br",
-   "Obuseiro pronto.",
+   "af_heart",
+   "en-us",
+   "Howitzer is ready.",
    1.0
   ],
-  "unidade_harvester": [
-   "pf_dora",
-   "pt-br",
-   "Coletor pronto.",
-   1.0,
-   "kolˈetoɾ prˈoŋtʊ."
-  ],
   "base_ataque": [
-   "pf_dora",
-   "pt-br",
-   "Alerta! A base está sob ataque!",
+   "af_heart",
+   "en-us",
+   "Alert! The base is under attack!",
    1.1
   ],
   "coletor_ataque": [
-   "pf_dora",
-   "pt-br",
-   "Alerta! O coletor está sob ataque!",
+   "af_heart",
+   "en-us",
+   "Alert! Harvester taking fire!",
    1.1
   ],
   "unidades_ataque": [
-   "pf_dora",
-   "pt-br",
-   "Nossas unidades estão sob ataque.",
-   1.12
+   "af_heart",
+   "en-us",
+   "Our forces are taking fire.",
+   1.1
   ],
   "inimigo_detectado": [
-   "pf_dora",
-   "pt-br",
-   "Atenção, inimigo detectado.",
+   "af_heart",
+   "en-us",
+   "Attention, hostiles detected.",
    1.0
   ],
   "inimigo_base": [
-   "pf_dora",
-   "pt-br",
-   "Inimigos se aproximando da base.",
-   1.12
+   "af_heart",
+   "en-us",
+   "Hostiles closing on the base.",
+   1.1
   ],
   "energia_baixa": [
-   "pf_dora",
-   "pt-br",
-   "Energia baixa.",
+   "af_heart",
+   "en-us",
+   "Power running low.",
    1.0
   ],
   "energia_ok": [
-   "pf_dora",
-   "pt-br",
-   "Energia restaurada.",
+   "af_heart",
+   "en-us",
+   "Power restored.",
    1.0
   ],
   "estrutura_perdida": [
-   "pf_dora",
-   "pt-br",
-   "Estrutura perdida.",
+   "af_heart",
+   "en-us",
+   "Structure destroyed.",
    1.0
   ],
   "coletor_perdido": [
-   "pf_dora",
-   "pt-br",
-   "Coletor destruído.",
+   "af_heart",
+   "en-us",
+   "Harvester destroyed.",
    1.0
   ],
   "unidade_perdida": [
-   "pf_dora",
-   "pt-br",
-   "Unidade perdida.",
+   "af_heart",
+   "en-us",
+   "We lost a unit.",
    1.0
   ],
   "central_perdida": [
-   "pf_dora",
-   "pt-br",
-   "Central perdida! Não podemos mais construir.",
-   1.08
+   "af_heart",
+   "en-us",
+   "Headquarters lost! We can no longer build.",
+   1.05
   ],
   "vendido": [
-   "pf_dora",
-   "pt-br",
-   "Estrutura vendida.",
+   "af_heart",
+   "en-us",
+   "Structure sold.",
    1.0
   ],
   "reparando": [
-   "pf_dora",
-   "pt-br",
-   "Reparando.",
+   "af_heart",
+   "en-us",
+   "Repairing.",
    1.0
   ],
   "limite": [
-   "pf_dora",
-   "pt-br",
-   "Limite de unidades atingido.",
+   "af_heart",
+   "en-us",
+   "Unit limit reached.",
    1.0
   ],
   "inimigo_destruido": [
-   "pf_dora",
-   "pt-br",
-   "Estrutura inimiga destruída.",
+   "af_heart",
+   "en-us",
+   "Enemy structure eliminated.",
    1.0
   ],
   "encontro": [
-   "pf_dora",
-   "pt-br",
-   "Ponto de encontro definido.",
+   "af_heart",
+   "en-us",
+   "Rally point set.",
    1.0
   ],
   "vitoria": [
-   "pf_dora",
-   "pt-br",
-   "Vitória! O inimigo foi derrotado.",
+   "af_heart",
+   "en-us",
+   "Victory! The enemy has fallen.",
    0.95
   ],
   "derrota": [
-   "pf_dora",
-   "pt-br",
-   "Derrota. Nossa base caiu.",
-   0.92,
-   "dehˈɔta. nˈɔsa bˈazi kaˈiw."
+   "af_heart",
+   "en-us",
+   "Defeat. Our base has fallen.",
+   0.92
   ],
   "unidades_prontas": [
-   "pf_dora",
-   "pt-br",
-   "Unidades prontas.",
+   "af_heart",
+   "en-us",
+   "Units ready.",
    1.0
   ],
   "base_ataque_v2": [
-   "pf_dora",
-   "pt-br",
-   "Alerta! Nossa base está sob ataque!",
+   "af_heart",
+   "en-us",
+   "Alert! Our base is taking fire!",
    1.1
   ],
   "coletor_ataque_v2": [
-   "pf_dora",
-   "pt-br",
-   "Alerta! Coletor sendo atacado!",
+   "af_heart",
+   "en-us",
+   "Alert! Harvester under fire!",
    1.1
   ],
   "pronto_power_v2": [
-   "pf_dora",
-   "pt-br",
-   "Usina concluída.",
+   "af_heart",
+   "en-us",
+   "Power plant online.",
    1.0
   ],
   "unidade_tank_v2": [
-   "pf_dora",
-   "pt-br",
-   "Blindado a postos.",
+   "af_heart",
+   "en-us",
+   "Tank standing by.",
    1.0
   ],
-  "unidade_harvester_v2": [
-   "pf_dora",
-   "pt-br",
-   "Novo coletor pronto.",
-   1.0,
-   "nˈovʊ kolˈetoɾ prˈoŋtʊ."
-  ],
   "unidades_prontas_v2": [
-   "pf_dora",
-   "pt-br",
-   "Reforços prontos.",
+   "af_heart",
+   "en-us",
+   "Reinforcements ready.",
    1.0
   ]
  },
  "tropa": {
   "sel_1": [
-   "pm_alex",
-   "pt-br",
-   "Às ordens!",
-   1.08
+   "am_michael",
+   "en-us",
+   "Ready, sir!",
+   1.05
   ],
   "vsel_1": [
-   "pm_santa",
-   "pt-br",
-   "Às ordens!",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Ready, sir!",
+   1.0
   ],
   "sel_2": [
-   "pm_alex",
-   "pt-br",
-   "Pronto, comandante.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Commander?",
+   1.05
   ],
   "vsel_2": [
-   "pm_santa",
-   "pt-br",
-   "Pronto, comandante.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Commander?",
+   1.0
   ],
   "sel_3": [
-   "pm_alex",
-   "pt-br",
-   "Na escuta.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Listening.",
+   1.05
   ],
   "vsel_3": [
-   "pm_santa",
-   "pt-br",
-   "Na escuta.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Listening.",
+   1.0
   ],
   "sel_4": [
-   "pm_alex",
-   "pt-br",
-   "Aguardando ordens.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Awaiting orders.",
+   1.05
   ],
   "vsel_4": [
-   "pm_santa",
-   "pt-br",
-   "Aguardando ordens.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Awaiting orders.",
+   1.0
   ],
   "sel_5": [
-   "pm_alex",
-   "pt-br",
-   "Sim, comandante?",
-   1.08
+   "am_michael",
+   "en-us",
+   "Yes, sir?",
+   1.05
   ],
   "vsel_5": [
-   "pm_santa",
-   "pt-br",
-   "Sim, comandante?",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Yes, sir?",
+   1.0
   ],
   "sel_6": [
-   "pm_alex",
-   "pt-br",
-   "Pronto para agir.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Standing by.",
+   1.05
   ],
   "vsel_6": [
-   "pm_santa",
-   "pt-br",
-   "Pronto para agir.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Standing by.",
+   1.0
   ],
   "mov_1": [
-   "pm_alex",
-   "pt-br",
-   "A caminho!",
-   1.08
+   "am_michael",
+   "en-us",
+   "On my way!",
+   1.05
   ],
   "vmov_1": [
-   "pm_santa",
-   "pt-br",
-   "A caminho!",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "On my way!",
+   1.0
   ],
   "mov_2": [
-   "pm_alex",
-   "pt-br",
-   "Entendido.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Understood.",
+   1.05
   ],
   "vmov_2": [
-   "pm_santa",
-   "pt-br",
-   "Entendido.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Understood.",
+   1.0
   ],
   "mov_3": [
-   "pm_alex",
-   "pt-br",
-   "Positivo.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Copy that.",
+   1.05
   ],
   "vmov_3": [
-   "pm_santa",
-   "pt-br",
-   "Positivo.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Copy that.",
+   1.0
   ],
   "mov_4": [
-   "pm_alex",
-   "pt-br",
-   "Indo para lá.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Heading out.",
+   1.05
   ],
   "vmov_4": [
-   "pm_santa",
-   "pt-br",
-   "Indo para lá.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Heading out.",
+   1.0
   ],
   "mov_5": [
-   "pm_alex",
-   "pt-br",
-   "Deixa comigo.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Leave it to me.",
+   1.05
   ],
   "vmov_5": [
-   "pm_santa",
-   "pt-br",
-   "Deixa comigo.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Leave it to me.",
+   1.0
   ],
   "mov_6": [
-   "pm_alex",
-   "pt-br",
-   "Em movimento.",
-   1.08
+   "am_michael",
+   "en-us",
+   "Moving.",
+   1.05
   ],
   "vmov_6": [
-   "pm_santa",
-   "pt-br",
-   "Em movimento.",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Moving.",
+   1.0
   ],
   "atk_1": [
-   "pm_alex",
-   "pt-br",
-   "Atacando!",
-   1.08
+   "am_michael",
+   "en-us",
+   "Engaging!",
+   1.05
   ],
   "vatk_1": [
-   "pm_santa",
-   "pt-br",
-   "Atacando!",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Engaging!",
+   1.0
   ],
   "atk_2": [
-   "pm_alex",
-   "pt-br",
-   "Fogo à vontade!",
-   1.08
+   "am_michael",
+   "en-us",
+   "Open fire!",
+   1.05
   ],
   "vatk_2": [
-   "pm_santa",
-   "pt-br",
-   "Fogo à vontade!",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Open fire!",
+   1.0
   ],
   "atk_3": [
-   "pm_alex",
-   "pt-br",
-   "Alvo na mira!",
-   1.08
+   "am_michael",
+   "en-us",
+   "Target locked!",
+   1.05
   ],
   "vatk_3": [
-   "pm_santa",
-   "pt-br",
-   "Alvo na mira!",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Target locked!",
+   1.0
   ],
   "atk_4": [
-   "pm_alex",
-   "pt-br",
-   "Pode deixar!",
-   1.08
+   "am_michael",
+   "en-us",
+   "Weapons hot!",
+   1.05
   ],
   "vatk_4": [
-   "pm_santa",
-   "pt-br",
-   "Pode deixar!",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Weapons hot!",
+   1.0
   ],
   "atk_5": [
-   "pm_alex",
-   "pt-br",
-   "Abrindo fogo!",
-   1.08
+   "am_michael",
+   "en-us",
+   "Firing!",
+   1.05
   ],
   "vatk_5": [
-   "pm_santa",
-   "pt-br",
-   "Abrindo fogo!",
-   1.05
+   "am_fenrir",
+   "en-us",
+   "Firing!",
+   1.0
   ],
   "atk_6": [
-   "pm_alex",
-   "pt-br",
-   "Vamos pegá-los!",
-   1.08
-  ],
-  "vatk_6": [
-   "pm_santa",
-   "pt-br",
-   "Vamos pegá-los!",
+   "am_michael",
+   "en-us",
+   "Let's take them down!",
    1.05
   ],
+  "vatk_6": [
+   "am_fenrir",
+   "en-us",
+   "Let's take them down!",
+   1.0
+  ],
   "col_sel_1": [
-   "pm_santa",
-   "pt-br",
-   "Coletor na escuta.",
+   "am_fenrir",
+   "en-us",
+   "Harvester here.",
    1.0
   ],
   "col_sel_2": [
-   "pm_santa",
-   "pt-br",
-   "Coletor pronto para colher.",
+   "am_fenrir",
+   "en-us",
+   "Ready to harvest.",
    1.0
   ],
   "col_mov_1": [
-   "pm_santa",
-   "pt-br",
-   "Vou colher.",
+   "am_fenrir",
+   "en-us",
+   "Going to harvest.",
    1.0
   ],
   "col_mov_2": [
-   "pm_santa",
-   "pt-br",
-   "Indo para o cristal.",
+   "am_fenrir",
+   "en-us",
+   "Heading for the crystal.",
    1.0
   ]
  }

@@ -35,7 +35,7 @@ function lowPower(team) {
 
 // "pronta"/"pronto", "destruída"/"destruído" conforme o nome do prédio
 function genderize(def, word) {
-  return def.fem ? word + 'a' : word + 'o';
+  return word; // jogo em inglês: o adjetivo não muda com o gênero
 }
 
 // Percorre a lista alternando o sentido a cada passo de simulação.

@@ -269,8 +269,8 @@ function onAttacked(e, attacker) {
   if (e.team === 0 && (important || !isPointOnScreen(e.x, e.y)) && gameTime - (alertLast[kind] ?? -999) > 20) {
     alertLast[kind] = gameTime;
     t.lastAlert = gameTime;
-    const what = e.kind === 'building' ? 'Base sob ataque!' : e.type === 'harvester' ? 'Coletor sob ataque!' : 'Unidades sob ataque!';
-    notify(what + ' (Espaço: ir até lá)', '#ff7a6a', 'alert');
+    const what = e.kind === 'building' ? 'Base under attack!' : e.type === 'harvester' ? 'Harvester under attack!' : 'Units under attack!';
+    notify(what + ' (Space: go there)', '#ff7a6a', 'alert');
     lastAlertPos = { x: e.x, y: e.y };
     // A sirene e a voz saem juntas pela fila do locutor: a sirene toca, a voz entra logo depois dela
     announce(kind === 'base' ? 'base_ataque' : kind === 'coletor' ? 'coletor_ataque' : 'unidades_ataque', { cue: 'alert' });
@@ -285,7 +285,7 @@ function killEntity(e, attacker) {
     destroyBuilding(e);
     if (e.team === 0) {
       const def = BUILDING_TYPES[e.type];
-      notify(def.name + ' ' + genderize(def, 'destruíd'), '#ff7a6a', 'alert');
+      notify(def.name + ' ' + 'destroyed', '#ff7a6a', 'alert');
     }
     return;
   }

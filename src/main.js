@@ -243,7 +243,7 @@ function loop(time) {
       console.warn('Premium desligado:', e.message);
       premium.failed = true; premium.ok = false;
       applyGraphicsMode('classico', true);
-      if (gameState === 'playing') notify('Gráficos Premium indisponíveis: voltando ao Clássico');
+      if (gameState === 'playing') notify('Premium graphics unavailable: switching to Classic');
       premiumOk = false;
     }
   }
@@ -306,7 +306,7 @@ function initialGraphicsMode() {
   return 'auto';
 }
 
-const GRAPHICS_NAMES = { premium: 'Premium', classico: 'Clássico', leve: 'Leve' };
+const GRAPHICS_NAMES = { premium: 'Premium', classico: 'Classic', leve: 'Lite' };
 
 function applyGraphicsMode(mode, quiet) {
   if (mode === 'auto') mode = initPremium() && premium.tier === 'gpu' ? 'premium' : 'classico';
@@ -334,8 +334,8 @@ function cycleGraphicsMode() {
   const m = applyGraphicsMode(order[i]);
   // Na pausa e no título o próprio botão mostra o modo (e os avisos ficam parados na pausa)
   if (typeof notify === 'function' && gameState === 'playing') {
-    messages = messages.filter(x => !String(x.text).startsWith('Gráficos: '));
-    notify('Gráficos: ' + GRAPHICS_NAMES[m]);
+    messages = messages.filter(x => !String(x.text).startsWith('Graphics: '));
+    notify('Graphics: ' + GRAPHICS_NAMES[m]);
   }
   return m;
 }

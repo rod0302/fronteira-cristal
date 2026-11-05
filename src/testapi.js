@@ -161,16 +161,16 @@ window.__jogo = {
   // Posiciona o prédio pronto. Sem tx/ty, procura sozinho um lugar válido perto da base.
   posicionar(tx, ty, time = 0) {
     const c = teams[time].construct;
-    if (!c) return 'Nada em construção';
-    if (!c.ready) return 'Ainda não está pronto';
+    if (!c) return 'Nothing under construction';
+    if (!c.ready) return 'Not ready yet';
     if (tx === undefined) {
       const spot = findBuildSpot(time, c.type);
-      if (!spot) return 'Sem lugar válido';
+      if (!spot) return 'No valid spot';
       tx = spot.x; ty = spot.y;
     }
     const check = checkPlacement(time, c.type, tx, ty);
     if (!check.ok) return check.reason;
-    return placeConstruction(time, tx, ty) ? null : 'Não foi possível posicionar';
+    return placeConstruction(time, tx, ty) ? null : 'Could not place it';
   },
   lugarValido(tipo, time = 0) { return findBuildSpot(time, tipo); },
   produzir(tipo, time = 0) { return queueUnit(time, tipo); },

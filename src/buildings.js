@@ -80,12 +80,12 @@ function checkPlacement(team, type, tx, ty) {
   for (let y = ty; y < ty + def.h; y++) {
     for (let x = tx; x < tx + def.w; x++) {
       let ok = isBuildable(gameMap, x, y);
-      if (!ok && !reason) reason = gameMap.occ[(y * gameMap.w + x)] ? 'Lugar ocupado' : 'Só dá para construir no planalto de pedra';
+      if (!ok && !reason) reason = gameMap.occ[(y * gameMap.w + x)] ? 'Space occupied' : 'You can only build on the stone plateau';
       // Nenhuma unidade com o corpo dentro do tile
       if (ok && units.some(u => u.x + u.radius > x * TILE && u.x - u.radius < (x + 1) * TILE &&
           u.y + u.radius > y * TILE && u.y - u.radius < (y + 1) * TILE)) {
         ok = false;
-        if (!reason) reason = 'Há unidades no caminho';
+        if (!reason) reason = 'Units are in the way';
       }
       tiles.push({ x, y, ok });
     }
@@ -96,13 +96,13 @@ function checkPlacement(team, type, tx, ty) {
     const d = doorTile(b);
     if (d.x >= tx && d.x < tx + def.w && d.y >= ty && d.y < ty + def.h) {
       tiles.forEach(t => { if (t.x === d.x && t.y === d.y) t.ok = false; });
-      if (!reason) reason = 'Bloquearia a porta de ' + BUILDING_TYPES[b.type].name;
+      if (!reason) reason = 'Would block the door of the ' + BUILDING_TYPES[b.type].name;
     }
   }
   const near = teamBuildings(team).some(b => b.type !== 'turret' && rectGap(tx, ty, def.w, def.h, b.tx, b.ty, b.w, b.h) <= BUILD_RANGE);
   if (!near) {
     tiles.forEach(t => { t.ok = false; });
-    if (!reason) reason = 'Longe demais da base';
+    if (!reason) reason = 'Too far from the base';
   }
   return { ok: !reason, reason, tiles };
 }
@@ -176,9 +176,9 @@ function advanceItem(team, item, def, dt) {
 function startConstruction(team, type) {
   const t = teams[team];
   const def = BUILDING_TYPES[type];
-  if (!def || def.buildable === false) return 'Não dá para construir isso';
-  if (!hasBuilding(team, 'hq')) return 'Sem Central não se constrói';
-  if (t.construct) return 'Já há uma construção em andamento';
+  if (!def || def.buildable === false) return "That can't be built";
+  if (!hasBuilding(team, 'hq')) return 'No Headquarters: nothing can be built';
+  if (t.construct) return 'A construction is already in progress';
   const miss = missingReq(team, def);
   if (miss) return 'Requer ' + BUILDING_TYPES[miss].name;
   t.construct = { type, progress: 0, spent: 0, ready: false, waiting: false };
@@ -199,7 +199,7 @@ function updateConstruction(team, dt) {
   // Sem Central não se constrói: a obra (mesmo pronta) é cancelada e o dinheiro volta
   if (!hasBuilding(team, 'hq')) {
     cancelConstruction(team);
-    if (team === 0) notify('Sem Central: obra cancelada e créditos devolvidos.', '#ff7a6a');
+    if (team === 0) notify('No Headquarters: construction canceled and credits refunded.', '#ff7a6a');
     return;
   }
   if (c.ready) return;
@@ -207,7 +207,7 @@ function updateConstruction(team, dt) {
     c.ready = true;
     if (team === 0 && !demoMode) {
       const def = BUILDING_TYPES[c.type];
-      notify(def.name + ' ' + genderize(def, 'pront') + ': clique no botão e escolha onde colocar', '#c8ffc6', 'ready');
+      notify(def.name + ' ' + 'ready: click the button and choose where to place it', '#c8ffc6', 'ready');
       announce(LINES['pronto_' + c.type] ? 'pronto_' + c.type : 'construcao_pronta', { cue: 'ready' });
     }
   }
@@ -224,12 +224,11 @@ function placeConstruction(team, tx, ty) {
   t.stats.built++;
   // A Refinaria já vem com um Coletor
   if (b.type === 'refinery' && unitCount(team) >= UNIT_CAP && team === 0) {
-    notify('Limite de unidades: a Refinaria veio sem o Coletor grátis.', '#ffcf6a');
+    notify('Unit limit reached: the Refinery came without its free Harvester.', '#ffcf6a');
   } else if (b.type === 'refinery') {
     const exit = buildingExit(b);
     if (exit) {
       spawnUnit('harvester', team, exit.x, exit.y); // "Harvester deployed" quando ele chega ao cristal
-      if (team === 0 && !demoMode) announce('unidade_harvester', { lead: 0.8 }); // "Coletor pronto"
     }
   }
   if (team === 0 && !demoMode) sfx('place', b.x, b.y);
@@ -261,7 +260,7 @@ function unitCount(team) {
 function queueUnit(team, type) {
   const why = unitBlockReason(team, type);
   if (why) return why;
-  if (unitCount(team) >= UNIT_CAP) return 'Limite de ' + UNIT_CAP + ' unidades atingido';
+  if (unitCount(team) >= UNIT_CAP) return 'Unit limit of ' + UNIT_CAP + ' reached';
   const prods = producersFor(team, type).sort((a, b) => a.queue.length - b.queue.length);
   const p = prods[0];
   if (p.queue.length >= QUEUE_MAX) return 'Fila cheia';
@@ -316,8 +315,9 @@ function updateProduction(b, dt) {
   }
   if (b.team === 0 && !demoMode) {
     sfx('unit', b.x, b.y);
-    announce('unidade_' + item.type); // "Coletor pronto", "Blindado pronto"...
-    notify(def.name + ' pronto', null, 'unit');
+    // O Coletor não tem fala de pronto: ele anuncia "Harvester deployed" ao começar a colher (sem fala dupla)
+    if (item.type !== 'harvester') announce('unidade_' + item.type); // "Tank ready"...
+    notify(def.name + ' ready', null, 'unit');
   }
 }
 

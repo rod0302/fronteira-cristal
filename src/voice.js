@@ -54,7 +54,6 @@ const LINES = {
   unidade_scout:      { p: 1, gap: 12, wait: 4 },
   unidade_tank:       { p: 1, gap: 12, wait: 4 },
   unidade_artillery:  { p: 1, gap: 12, wait: 4 },
-  unidade_harvester:  { p: 2, gap: 4, wait: 6 },
   unidades_prontas:   { p: 1, gap: 8, wait: 4 },
   base_ataque:        { p: 3, gap: 20, wait: 6, en: 'Base under attack' },
   coletor_ataque:     { p: 3, gap: 20, wait: 6, en: 'Harvester under attack' },
@@ -188,7 +187,7 @@ function announce(key, opts = {}) {
   const cueOnly = () => { if (opts.cue && opts.cue !== 'alert' && opts.cue !== 'detect') sfx(opts.cue, opts.cueX, opts.cueY); return false; };
   // Várias unidades prontas em seguida: uma fala só ("Unidades prontas")
   // (só as falas de unidade pronta: "unidade_perdida" não entra)
-  if (key.startsWith('unidade_') && key !== 'unidade_harvester' && UNIT_TYPES[key.slice(8)]) {
+  if (key.startsWith('unidade_') && UNIT_TYPES[key.slice(8)]) {
     if (now - lastUnitReadyAt < 8) key = 'unidades_prontas';
     lastUnitReadyAt = now;
     L = LINES[key];
@@ -221,7 +220,7 @@ function announce(key, opts = {}) {
   if (L.p >= 3) {
     const end = key === 'vitoria' || key === 'derrota';
     annQueue = annQueue.filter(q => q.key === key || (!end && !DANGER_SUPERSEDES.includes(q.key)));
-    // As falas pedidas pelo Rodrigo ("Harvester deployed", "Coletor pronto") terminam; o perigo entra logo depois
+    // A fala pedida pelo Rodrigo ("Harvester deployed") termina; o perigo entra logo depois
     if (annNow && annNow.src && (end ? annNow.key !== key : annNow.p <= 2 && !NEVER_CUT.includes(annNow.key))) cutLine();
   }
   if (!annTimer) annTimer = setInterval(pumpAnnouncer, 40);
@@ -232,7 +231,7 @@ function announce(key, opts = {}) {
 // Avisos que um "sob ataque" torna desnecessários
 const DANGER_SUPERSEDES = ['inimigo_detectado', 'inimigo_base', 'unidades_ataque'];
 // Falas curtas que não são cortadas por um perigo
-const NEVER_CUT = ['harvester_deployed', 'unidade_harvester'];
+const NEVER_CUT = ['harvester_deployed'];
 function cutLine() {
   try { annNow.gain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.02); annNow.src.stop(audioCtx.currentTime + 0.1); } catch (e) { /* já parou */ }
   // O chiado de fechamento agendado para o fim da fala cortada também sai
@@ -395,8 +394,8 @@ function unitAck(group, kind) {
 
 // ---------- Compatibilidade: say(texto) dos avisos antigos ----------
 const SAY_KEYS = {
-  'Base sob ataque': 'base_ataque', 'Coletor sob ataque': 'coletor_ataque', 'Energia baixa': 'energia_baixa',
-  'Construção concluída': 'construcao_pronta', 'Vitória': 'vitoria', 'Derrota': 'derrota',
+  'Base under attack': 'base_ataque', 'Harvester under attack': 'coletor_ataque', 'Low power': 'energia_baixa',
+  'Construction finished': 'construcao_pronta', 'Victory': 'vitoria', 'Defeat': 'derrota',
   'Harvester deployed': 'harvester_deployed',
 };
 function say(text, lang, gap, lead) {
@@ -481,10 +480,9 @@ function speechBusy() {
 // Fala sem o pacote. Devolve por onde saiu.
 function fallbackSpeak(key, text) {
   const L = LINES[key] || {};
-  const en = key === 'harvester_deployed';
-  let voice = forceRobot ? null : pickVoice(en ? 'en-US' : 'pt-BR');
-  let spoken = text, lang = en ? 'en-US' : 'pt-BR';
-  if (!voice && !forceRobot && L.en && pickVoice('en-US')) { spoken = L.en; lang = 'en-US'; voice = pickVoice('en-US'); }
+  // Todas as falas são em inglês: a reserva usa sempre uma voz en-US
+  const voice = forceRobot ? null : pickVoice('en-US');
+  const spoken = text, lang = 'en-US';
   if (voice && window.speechSynthesis) {
     radioChirp(0, false);
     const len = 0.4 + spoken.length * 0.075;
@@ -503,7 +501,7 @@ function fallbackSpeak(key, text) {
       return 'navegador';
     } catch (e) { /* segue para a robótica */ }
   }
-  const phrase = en ? 'Harvester deployed' : L.en;
+  const phrase = key === 'harvester_deployed' ? 'Harvester deployed' : L.en;
   if (phrase && ROBOT_PHRASES[phrase]) { robotLine(phrase); return 'robo'; }
   return 'sem voz';
 }

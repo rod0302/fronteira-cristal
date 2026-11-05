@@ -118,7 +118,7 @@ function updateHarvester(u, dt) {
       if (!t) {
         if (u.team === 0 && !mapEmptyWarned && !gameMap.tiles.includes(TERRAIN.CRYSTAL)) {
           mapEmptyWarned = true;
-          notify('O cristal do mapa acabou: a renda parou. Vence quem usar melhor o que tem.', '#ffcf6a');
+          notify('The crystal on the map has run out: income has stopped. Make the most of what you have.', '#ffcf6a');
         }
         if (u.cargo > 0) goUnload(u);
         else u.wait = 2;
@@ -219,7 +219,7 @@ function warnFarCrystal(u, t) {
   const c = tileCenter(t);
   if (dist(c.x, c.y, r.x, r.y) < TILE * 18) return;
   lastFarCrystalWarning = gameTime;
-  notify('O cristal perto da Refinaria está acabando: os Coletores vão longe. Construa uma Refinaria perto de outro campo.', '#ffcf6a');
+  notify('Crystal near the Refinery is running out: Harvesters must travel far. Build a Refinery near another field.', '#ffcf6a');
 }
 
 function updateHarvesters(dt) {

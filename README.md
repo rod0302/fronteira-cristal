@@ -1,4 +1,6 @@
-# Fronteira Cristal
+# Fronteira Cristal (Crystal Frontier)
+
+> O jogo (menus, textos e vozes) é todo em inglês: na tela ele se chama **Crystal Frontier**. Esta documentação continua em português.
 
 RTS original para navegador, no espírito dos clássicos de estratégia em tempo real do começo dos anos 90:
 colher cristal, erguer a base, montar um exército e destruir o inimigo.
@@ -19,10 +21,10 @@ O jogo tem três modos gráficos. A simulação é a mesma nos três (só o dese
   explosões em fases (clarão, bola de fogo, explosões secundárias, coluna de fumaça, destroços, faíscas),
   cristais que brilham, névoa de guerra como um teto de nuvens baixas; HDR, bloom, ACES, gradação de cor e
   antisserrilhado. A resolução se ajusta sozinha para manter a fluidez.
-- **Clássico**: o desenho 2D da versão anterior (canvas). Padrão quando o navegador não tem placa de vídeo.
-- **Leve**: o Clássico com menos enfeites, para computador fraco.
+- **Clássico** (*Classic*): o desenho 2D da versão anterior (canvas). Padrão quando o navegador não tem placa de vídeo.
+- **Leve** (*Lite*): o Clássico com menos enfeites, para computador fraco.
 
-Para trocar: botão **Gráficos** na tela de título ou na pausa, ou a tecla **F9** a qualquer momento.
+Para trocar: botão **Graphics** na tela de título ou na pausa, ou a tecla **F9** a qualquer momento.
 A escolha fica guardada. Endereços: `index.html?premium`, `?classico`, `?leve`.
 
 ### Visual e som (modo Clássico)
@@ -37,10 +39,10 @@ A escolha fica guardada. Endereços: `index.html?premium`, `?classico`, `?leve`.
   danificados, vento e zumbido da base. Reverb de vale, eco das mesas de pedra, som que abafa com a
   distância e volume de cada som por loudness (prédio > veículo > canhão > fuzil > interface).
 - **Locutora e tropas com vozes sintetizadas** e embutidas no jogo (`src/voicepack.js`): falam igual
-  em qualquer navegador, sem internet e sem voz instalada. "Coletor pronto", "Torre de defesa pronta",
-  "Alerta! A base está sob ataque!", "Atenção, inimigo detectado", "Usina pronta", "Energia baixa",
-  "Unidade perdida", vitória, derrota e outras, cada uma com o seu sinal (sirene, sino, pulso de radar).
-  **"Harvester deployed"** toca quando o Coletor chega ao cristal e começa a colher pela primeira vez.
+  em qualquer navegador, sem internet e sem voz instalada. tudo em inglês: "Defense turret ready",
+  "Alert! The base is under attack!", "Attention, hostiles detected", "Power plant ready", "Power running low",
+  "We lost a unit", vitória, derrota e outras, cada uma com o seu sinal (sirene, sino, pulso de radar).
+  **"Harvester deployed"** toca quando o Coletor chega ao cristal e começa a colher pela primeira vez (é a única fala do Coletor pronto, sem repetir em português).
   Soldados e veículos respondem ao serem selecionados e ao receberem ordens. Locutora e tropas nunca
   falam juntas, perigo passa na frente e a batalha abaixa enquanto alguém fala.
   Sem o pacote, sai a voz do navegador e, sem ela, uma voz robótica de rádio.
@@ -55,14 +57,14 @@ A escolha fica guardada. Endereços: `index.html?premium`, `?classico`, `?leve`.
 
 Dê duplo clique em `index.html`. Funciona direto via `file://`.
 
-Na tela de título, escolha sua facção, a do inimigo, a dificuldade e um dos três mapas, e clique em **JOGAR**.
+Na tela de título, escolha sua facção, a do inimigo, a dificuldade e um dos três mapas, e clique em **PLAY**.
 Você começa com 3000 créditos, uma Central e um pequeno exército no canto superior esquerdo; o inimigo está no canto oposto.
 Os mapas são simétricos (o lado do inimigo é o espelho do seu), então nenhum canto tem mais cristal.
 A cada partida a IA sorteia uma abertura e o momento da primeira onda.
 Vence quem destruir todos os prédios e unidades armadas do outro.
 
 **Primeiros passos:** Usina → Refinaria (vem com um Coletor, que colhe sozinho) → Quartel → Fábrica.
-O quadro **Objetivo**, no canto inferior direito, sempre sugere o próximo passo.
+O quadro **Objective**, no canto inferior direito, sempre sugere o próximo passo.
 
 ### Controles
 
@@ -75,7 +77,7 @@ O quadro **Objetivo**, no canto inferior direito, sempre sugere o próximo passo
 | Atacar-movendo | A (ou botão Atacar no painel) e depois clique no destino (mapa ou minimapa); o grupo anda junto |
 | Parar | S (ou botão Parar no painel) |
 | Ponto de encontro | selecione Fábrica ou Quartel e clique direito no mapa |
-| Construir prédio | clique no botão; quando aparecer PRONTO, clique de novo e escolha o lugar |
+| Construir prédio | clique no botão; quando aparecer READY, clique de novo e escolha o lugar |
 | Pôr unidade na fila | clique no botão (direito tira da fila) |
 | Reparar / vender prédio | selecione o prédio e use os botões no painel (R repara; V ou Delete vende; vender pede confirmação; a Central não se vende) |
 | Grupos | Ctrl+1..9 cria, 1..9 chama, dois toques centralizam |

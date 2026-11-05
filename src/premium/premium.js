@@ -76,7 +76,7 @@ function initPremium() {
       premium.failed = true;
       premium.ok = false;
       if (glCanvas) glCanvas.style.display = 'none';
-      if (typeof notify === 'function') notify('Modo Premium indisponível (placa de vídeo). Usando o Clássico.', '#ffb03a');
+      if (typeof notify === 'function') notify('Premium mode unavailable (graphics card). Using Classic.', '#ffb03a');
     });
     premium.ok = true;
     return true;
