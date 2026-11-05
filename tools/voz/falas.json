@@ -1,0 +1,515 @@
+{
+ "_comentario": "Catálogo das falas. chave -> [voz, idioma, texto, velocidade, fonemas opcionais (IPA, quando a pronúncia automática erra)]. Gerado por tools/voz/gerar.py.",
+ "locutor": {
+  "harvester_deployed": [
+   "af_heart",
+   "en-us",
+   "Harvester deployed.",
+   0.95
+  ],
+  "inicio": [
+   "pf_dora",
+   "pt-br",
+   "Comandante, base operacional.",
+   1.0
+  ],
+  "construindo": [
+   "pf_dora",
+   "pt-br",
+   "Construindo.",
+   1.0
+  ],
+  "construcao_pronta": [
+   "pf_dora",
+   "pt-br",
+   "Construção concluída.",
+   1.0
+  ],
+  "pronto_power": [
+   "pf_dora",
+   "pt-br",
+   "Usina pronta.",
+   1.0
+  ],
+  "pronto_refinery": [
+   "pf_dora",
+   "pt-br",
+   "Refinaria pronta.",
+   1.0
+  ],
+  "pronto_barracks": [
+   "pf_dora",
+   "pt-br",
+   "Quartel pronto.",
+   1.0
+  ],
+  "pronto_factory": [
+   "pf_dora",
+   "pt-br",
+   "Fábrica pronta.",
+   1.0
+  ],
+  "pronto_radar": [
+   "pf_dora",
+   "pt-br",
+   "Radar pronto.",
+   1.0,
+   "hadˈaɾ prˈoŋtʊ."
+  ],
+  "pronto_turret": [
+   "pf_dora",
+   "pt-br",
+   "Torre de defesa pronta.",
+   1.0
+  ],
+  "local_invalido": [
+   "pf_dora",
+   "pt-br",
+   "Não é possível construir aqui.",
+   1.05
+  ],
+  "sem_creditos": [
+   "pf_dora",
+   "pt-br",
+   "Créditos insuficientes.",
+   1.0
+  ],
+  "treinando": [
+   "pf_dora",
+   "pt-br",
+   "Treinando.",
+   1.0
+  ],
+  "unidade_trooper": [
+   "pf_dora",
+   "pt-br",
+   "Soldado pronto.",
+   1.0
+  ],
+  "unidade_rocketeer": [
+   "pf_dora",
+   "pt-br",
+   "Lança-foguetes pronto.",
+   1.0
+  ],
+  "unidade_scout": [
+   "pf_dora",
+   "pt-br",
+   "Batedor pronto.",
+   1.0
+  ],
+  "unidade_tank": [
+   "pf_dora",
+   "pt-br",
+   "Blindado pronto.",
+   1.0
+  ],
+  "unidade_artillery": [
+   "pf_dora",
+   "pt-br",
+   "Obuseiro pronto.",
+   1.0
+  ],
+  "unidade_harvester": [
+   "pf_dora",
+   "pt-br",
+   "Coletor pronto.",
+   1.0,
+   "kolˈetoɾ prˈoŋtʊ."
+  ],
+  "base_ataque": [
+   "pf_dora",
+   "pt-br",
+   "Alerta! A base está sob ataque!",
+   1.1
+  ],
+  "coletor_ataque": [
+   "pf_dora",
+   "pt-br",
+   "Alerta! O coletor está sob ataque!",
+   1.1
+  ],
+  "unidades_ataque": [
+   "pf_dora",
+   "pt-br",
+   "Nossas unidades estão sob ataque.",
+   1.12
+  ],
+  "inimigo_detectado": [
+   "pf_dora",
+   "pt-br",
+   "Atenção, inimigo detectado.",
+   1.0
+  ],
+  "inimigo_base": [
+   "pf_dora",
+   "pt-br",
+   "Inimigos se aproximando da base.",
+   1.12
+  ],
+  "energia_baixa": [
+   "pf_dora",
+   "pt-br",
+   "Energia baixa.",
+   1.0
+  ],
+  "energia_ok": [
+   "pf_dora",
+   "pt-br",
+   "Energia restaurada.",
+   1.0
+  ],
+  "estrutura_perdida": [
+   "pf_dora",
+   "pt-br",
+   "Estrutura perdida.",
+   1.0
+  ],
+  "coletor_perdido": [
+   "pf_dora",
+   "pt-br",
+   "Coletor destruído.",
+   1.0
+  ],
+  "unidade_perdida": [
+   "pf_dora",
+   "pt-br",
+   "Unidade perdida.",
+   1.0
+  ],
+  "central_perdida": [
+   "pf_dora",
+   "pt-br",
+   "Central perdida! Não podemos mais construir.",
+   1.08
+  ],
+  "vendido": [
+   "pf_dora",
+   "pt-br",
+   "Estrutura vendida.",
+   1.0
+  ],
+  "reparando": [
+   "pf_dora",
+   "pt-br",
+   "Reparando.",
+   1.0
+  ],
+  "limite": [
+   "pf_dora",
+   "pt-br",
+   "Limite de unidades atingido.",
+   1.0
+  ],
+  "inimigo_destruido": [
+   "pf_dora",
+   "pt-br",
+   "Estrutura inimiga destruída.",
+   1.0
+  ],
+  "encontro": [
+   "pf_dora",
+   "pt-br",
+   "Ponto de encontro definido.",
+   1.0
+  ],
+  "vitoria": [
+   "pf_dora",
+   "pt-br",
+   "Vitória! O inimigo foi derrotado.",
+   0.95
+  ],
+  "derrota": [
+   "pf_dora",
+   "pt-br",
+   "Derrota. Nossa base caiu.",
+   0.92,
+   "dehˈɔta. nˈɔsa bˈazi kaˈiw."
+  ],
+  "unidades_prontas": [
+   "pf_dora",
+   "pt-br",
+   "Unidades prontas.",
+   1.0
+  ],
+  "base_ataque_v2": [
+   "pf_dora",
+   "pt-br",
+   "Alerta! Nossa base está sob ataque!",
+   1.1
+  ],
+  "coletor_ataque_v2": [
+   "pf_dora",
+   "pt-br",
+   "Alerta! Coletor sendo atacado!",
+   1.1
+  ],
+  "pronto_power_v2": [
+   "pf_dora",
+   "pt-br",
+   "Usina concluída.",
+   1.0
+  ],
+  "unidade_tank_v2": [
+   "pf_dora",
+   "pt-br",
+   "Blindado a postos.",
+   1.0
+  ],
+  "unidade_harvester_v2": [
+   "pf_dora",
+   "pt-br",
+   "Novo coletor pronto.",
+   1.0,
+   "nˈovʊ kolˈetoɾ prˈoŋtʊ."
+  ],
+  "unidades_prontas_v2": [
+   "pf_dora",
+   "pt-br",
+   "Reforços prontos.",
+   1.0
+  ]
+ },
+ "tropa": {
+  "sel_1": [
+   "pm_alex",
+   "pt-br",
+   "Às ordens!",
+   1.08
+  ],
+  "vsel_1": [
+   "pm_santa",
+   "pt-br",
+   "Às ordens!",
+   1.05
+  ],
+  "sel_2": [
+   "pm_alex",
+   "pt-br",
+   "Pronto, comandante.",
+   1.08
+  ],
+  "vsel_2": [
+   "pm_santa",
+   "pt-br",
+   "Pronto, comandante.",
+   1.05
+  ],
+  "sel_3": [
+   "pm_alex",
+   "pt-br",
+   "Na escuta.",
+   1.08
+  ],
+  "vsel_3": [
+   "pm_santa",
+   "pt-br",
+   "Na escuta.",
+   1.05
+  ],
+  "sel_4": [
+   "pm_alex",
+   "pt-br",
+   "Aguardando ordens.",
+   1.08
+  ],
+  "vsel_4": [
+   "pm_santa",
+   "pt-br",
+   "Aguardando ordens.",
+   1.05
+  ],
+  "sel_5": [
+   "pm_alex",
+   "pt-br",
+   "Sim, comandante?",
+   1.08
+  ],
+  "vsel_5": [
+   "pm_santa",
+   "pt-br",
+   "Sim, comandante?",
+   1.05
+  ],
+  "sel_6": [
+   "pm_alex",
+   "pt-br",
+   "Pronto para agir.",
+   1.08
+  ],
+  "vsel_6": [
+   "pm_santa",
+   "pt-br",
+   "Pronto para agir.",
+   1.05
+  ],
+  "mov_1": [
+   "pm_alex",
+   "pt-br",
+   "A caminho!",
+   1.08
+  ],
+  "vmov_1": [
+   "pm_santa",
+   "pt-br",
+   "A caminho!",
+   1.05
+  ],
+  "mov_2": [
+   "pm_alex",
+   "pt-br",
+   "Entendido.",
+   1.08
+  ],
+  "vmov_2": [
+   "pm_santa",
+   "pt-br",
+   "Entendido.",
+   1.05
+  ],
+  "mov_3": [
+   "pm_alex",
+   "pt-br",
+   "Positivo.",
+   1.08
+  ],
+  "vmov_3": [
+   "pm_santa",
+   "pt-br",
+   "Positivo.",
+   1.05
+  ],
+  "mov_4": [
+   "pm_alex",
+   "pt-br",
+   "Indo para lá.",
+   1.08
+  ],
+  "vmov_4": [
+   "pm_santa",
+   "pt-br",
+   "Indo para lá.",
+   1.05
+  ],
+  "mov_5": [
+   "pm_alex",
+   "pt-br",
+   "Deixa comigo.",
+   1.08
+  ],
+  "vmov_5": [
+   "pm_santa",
+   "pt-br",
+   "Deixa comigo.",
+   1.05
+  ],
+  "mov_6": [
+   "pm_alex",
+   "pt-br",
+   "Em movimento.",
+   1.08
+  ],
+  "vmov_6": [
+   "pm_santa",
+   "pt-br",
+   "Em movimento.",
+   1.05
+  ],
+  "atk_1": [
+   "pm_alex",
+   "pt-br",
+   "Atacando!",
+   1.08
+  ],
+  "vatk_1": [
+   "pm_santa",
+   "pt-br",
+   "Atacando!",
+   1.05
+  ],
+  "atk_2": [
+   "pm_alex",
+   "pt-br",
+   "Fogo à vontade!",
+   1.08
+  ],
+  "vatk_2": [
+   "pm_santa",
+   "pt-br",
+   "Fogo à vontade!",
+   1.05
+  ],
+  "atk_3": [
+   "pm_alex",
+   "pt-br",
+   "Alvo na mira!",
+   1.08
+  ],
+  "vatk_3": [
+   "pm_santa",
+   "pt-br",
+   "Alvo na mira!",
+   1.05
+  ],
+  "atk_4": [
+   "pm_alex",
+   "pt-br",
+   "Pode deixar!",
+   1.08
+  ],
+  "vatk_4": [
+   "pm_santa",
+   "pt-br",
+   "Pode deixar!",
+   1.05
+  ],
+  "atk_5": [
+   "pm_alex",
+   "pt-br",
+   "Abrindo fogo!",
+   1.08
+  ],
+  "vatk_5": [
+   "pm_santa",
+   "pt-br",
+   "Abrindo fogo!",
+   1.05
+  ],
+  "atk_6": [
+   "pm_alex",
+   "pt-br",
+   "Vamos pegá-los!",
+   1.08
+  ],
+  "vatk_6": [
+   "pm_santa",
+   "pt-br",
+   "Vamos pegá-los!",
+   1.05
+  ],
+  "col_sel_1": [
+   "pm_santa",
+   "pt-br",
+   "Coletor na escuta.",
+   1.0
+  ],
+  "col_sel_2": [
+   "pm_santa",
+   "pt-br",
+   "Coletor pronto para colher.",
+   1.0
+  ],
+  "col_mov_1": [
+   "pm_santa",
+   "pt-br",
+   "Vou colher.",
+   1.0
+  ],
+  "col_mov_2": [
+   "pm_santa",
+   "pt-br",
+   "Indo para o cristal.",
+   1.0
+  ]
+ }
+}

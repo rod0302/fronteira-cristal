@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fronteira Cristal</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+    #game {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- Ordem importa: cada arquivo usa o que os anteriores definiram. -->
+  <script src="src/config.js"></script>
+  <script src="src/defs.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/map.js"></script>
+  <script src="src/path.js"></script>
+  <script src="src/camera.js"></script>
+  <script src="src/terrain.js"></script>
+  <script src="src/audio.js"></script>
+  <script src="src/sfxbank.js"></script>
+  <script src="src/voicepack.js"></script>
+  <script src="src/voice.js"></script>
+  <script src="src/units.js"></script>
+  <script src="src/buildings.js"></script>
+  <script src="src/harvest.js"></script>
+  <script src="src/combat.js"></script>
+  <script src="src/fog.js"></script>
+  <script src="src/ai.js"></script>
+  <script src="src/input.js"></script>
+  <script src="src/ui.js"></script>
+  <script src="src/sprites.js"></script>
+  <script src="src/fx.js"></script>
+  <script src="src/render.js"></script>
+  <!-- Modo Premium (WebGL2): mesmo jogo, desenhado em 3D com luz, sombras e efeitos -->
+  <script src="src/premium/glcore.js"></script>
+  <script src="src/premium/glsl.js"></script>
+  <script src="src/premium/mesh.js"></script>
+  <script src="src/premium/terrain3d.js"></script>
+  <script src="src/premium/props3d.js"></script>
+  <script src="src/premium/models.js"></script>
+  <script src="src/premium/fx3d.js"></script>
+  <script src="src/premium/shaders.js"></script>
+  <script src="src/premium/premium.js"></script>
+  <script src="src/testapi.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
