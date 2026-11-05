@@ -203,3 +203,10 @@ Detalhe em `logs/rodada-3-correcoes.md`.
 - **Textos originais**, escritos para este jogo; evitamos de propósito bordões conhecidos de outros jogos (ex.: "Construction finished", "Not enough credits", "We can't build there").
 - `genderize()` ficou neutro (em inglês o adjetivo não muda) e a voz de reserva do navegador usa sempre en-US.
 - Comentários do código e documentação continuam em português, como antes.
+
+### Dificuldade recalibrada (05/11/2026)
+- **Parecer do crítico independente** (logs/dificuldade-critico.md): Normal, o nível padrão, era um muro (casual vencia 3 de 60), o Fácil punia o novato e o Difícil ficava perto demais do Normal (com 1ª onda até menor).
+- **Novos números** em `src/config.js` (`DIFFICULTIES`): Fácil 0,6 de renda, 2 coletores, 1ª onda aos 600 s; Normal 0,8 de renda, 1 fábrica, 4 coletores, 1ª onda aos 420 s; Difícil = antigo Normal com o bônus do Difícil (renda 1,1, 6 coletores, 2 fábricas). O que mais pesava era a economia da IA, não o ritmo das ondas.
+- **IA mais esperta em vez de mais trapaça:** Torre logo depois do Quartel (Normal/Difícil); a onda que está fora volta quando a base sofre ataque de mais de 8 unidades; no Fácil, até 2 obuseiros depois de 20 min (acaba com o empate em torres).
+- **Objetivo pede uma Torre** depois do Quartel e o jogo avisa "Enemy attack on the way!" quando sai a 1ª onda (no Fácil, todas).
+- **Medido de novo** com os mesmos bots do crítico (216 partidas): ver logs/dificuldade-ajuste.md.

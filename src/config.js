@@ -54,10 +54,13 @@ const FACTIONS = [
 // Dificuldade da IA
 //   income: multiplicador do cristal que a IA recebe; buildSpeed: velocidade de produção
 //   firstWave/waveGap: segundos até o 1º ataque e entre ataques; waveStart/waveGrow: tamanho das ondas
+// earlyTurret: torre logo depois do Quartel; recall: onda volta quando a base sofre ataque grande;
+//   lateArtillery: segundos até liberar obuseiros (só onde artillery é false); warnAllWaves: avisa toda onda
+// Calibrado em 05/11/2026 por simulação (logs/dificuldade-critico.md e logs/dificuldade-ajuste.md)
 const DIFFICULTIES = {
-  facil:   { name: 'Easy',   income: 0.75, buildSpeed: 0.8, firstWave: 480, waveGap: 240, waveStart: 4, waveGrow: 1, waveMax: 12, maxHarvesters: 3, factories: 1, keepHome: 0.4, artillery: false, waveShare: 0.4 },
-  normal:  { name: 'Normal',  income: 0.95, buildSpeed: 1.0, firstWave: 330, waveGap: 170, waveStart: 7, waveGrow: 2, waveMax: 18, maxHarvesters: 5, factories: 2, keepHome: 0.2, raids: true, waveShare: 0.75 },
-  dificil: { name: 'Hard', income: 1.1,  buildSpeed: 1.0, firstWave: 300, waveGap: 160, waveStart: 7, waveGrow: 2, waveMax: 20, maxHarvesters: 6, factories: 2, keepHome: 0.3,  raids: true, waveShare: 0.6 },
+  facil:   { name: 'Easy',   income: 0.6,  buildSpeed: 0.7, firstWave: 600, waveGap: 300, waveStart: 3, waveGrow: 1, waveMax: 8,  maxHarvesters: 2, factories: 1, keepHome: 0.4,  artillery: false, lateArtillery: 1200, waveShare: 0.25, warnAllWaves: true },
+  normal:  { name: 'Normal', income: 0.8,  buildSpeed: 0.9, firstWave: 420, waveGap: 200, waveStart: 5, waveGrow: 1, waveMax: 14, maxHarvesters: 4, factories: 1, keepHome: 0.3,  raids: true, waveShare: 0.4, earlyTurret: true, recall: true },
+  dificil: { name: 'Hard',   income: 1.1,  buildSpeed: 1.0, firstWave: 330, waveGap: 165, waveStart: 7, waveGrow: 2, waveMax: 20, maxHarvesters: 6, factories: 2, keepHome: 0.25, raids: true, waveShare: 0.6, earlyTurret: true, recall: true },
 };
 
 // Facção de cada time, definida no início da partida (0 = jogador, 1 = inimigo)

@@ -446,6 +446,7 @@ function nextGoal() {
   if (lowPower(0)) return { build: 'power', text: 'Not enough power! Build more Power Plants.' };
   if (!has('refinery')) return { build: 'refinery', text: 'Build a Refinery. It comes with a Harvester that gathers crystal (the game\'s money).' };
   if (!has('barracks')) return { build: 'barracks', text: 'Build Barracks to train infantry and unlock the defense Turret.' };
+  if (!has('turret')) return { build: 'turret', text: 'Build a defense Turret facing the enemy side: the first attack comes in a few minutes.' };
   if (!has('factory')) return { build: 'factory', text: 'Build a Factory to produce tanks and Harvesters.' };
   const harvesters = units.filter(u => u.team === 0 && u.type === 'harvester').length + queuedCount(0, 'harvester');
   if (harvesters < 2) return { text: 'Buy a second Harvester at the Factory: it doubles your crystal income.' };

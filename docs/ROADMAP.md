@@ -111,7 +111,9 @@ A cada etapa, `window.__jogo` e os testes crescem junto com o que a etapa traz.
 - Telas grandes sem aceleração de vídeo dependem do modo leve (mapa menos nítido)
 - 240 unidades derrubam o fps para ~45; terreno final aparece ~1 s depois de abrir
 - IA que se expande (refinaria perto de outros campos)
-- Difícil ainda duro para quem não domina a economia
+- ~~Difícil ainda duro para quem não domina a economia~~ (05/11: o problema era o Normal; níveis recalibrados, ver logs/dificuldade-ajuste.md)
+- Ondas do Difícil mirarem coletores e refinaria em vez do prédio mais perto
+- Texto curto por nível na tela de título ("Fácil: para aprender...")
 - Divisão de caminho entre unidades do mesmo grupo (ordem para 50+ unidades custa ~40 ms)
 
 ## Ideias soltas (sem etapa definida)

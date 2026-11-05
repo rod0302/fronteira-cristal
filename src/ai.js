@@ -5,7 +5,7 @@
 // Plano de construção: lido em ordem, cada entrada conta como "quero ter N desse tipo".
 // Nas dificuldades com 2 fábricas, a segunda vem logo depois da segunda refinaria.
 // Duas aberturas: quartel primeiro (infantaria cedo) ou fábrica primeiro (blindados cedo)
-function aiPlan(factories, rng) {
+function aiPlan(factories, rng, earlyTurret) {
   const plan = rng() < 0.5
     ? ['power', 'refinery', 'barracks', 'power', 'factory', 'refinery']
     : ['power', 'refinery', 'factory', 'power', 'barracks', 'refinery'];
@@ -13,6 +13,8 @@ function aiPlan(factories, rng) {
   plan.push('radar', 'turret', 'power', 'refinery', 'turret', 'power', 'turret', 'power');
   if (factories < 2) plan.push('factory');
   plan.push('turret', 'power');
+  // Normal e Difícil: uma Torre logo depois do Quartel (defesa antes da 1ª onda do jogador)
+  if (earlyTurret) plan.splice(plan.indexOf('barracks') + 1, 0, 'turret');
   return plan;
 }
 
@@ -35,7 +37,8 @@ function createAI(team) {
     alert: null,                               // último ataque sofrido { x, y, t }
     lastDefend: -99,
     blocked: {},                               // tipo -> tempo até tentar de novo (sem lugar)
-    plan: aiPlan(diff.factories, rng),
+    plan: aiPlan(diff.factories, rng, diff.earlyTurret),
+    waves: 0,                                  // ondas lançadas (para o aviso ao jogador)
     waveStartSize: 0,                          // tamanho da onda atual quando saiu
     broke: 0,                                  // segundos sem refinaria e sem dinheiro
     rally: {
@@ -215,7 +218,10 @@ function aiProduce(ai) {
       type = 'harvester';
     } else {
       const r = ai.rng();
-      const arty = diff.artillery !== false && !missingReq(team, UNIT_TYPES.artillery);
+      // Fácil: sem obuseiro até lateArtillery, e depois no máximo 2 (desfaz o empate em torres)
+      const lateArty = diff.artillery === false && diff.lateArtillery && gameTime >= diff.lateArtillery &&
+          mine.filter(u => u.type === 'artillery').length + queuedCount(team, 'artillery') < 2;
+      const arty = (diff.artillery !== false || lateArty) && !missingReq(team, UNIT_TYPES.artillery);
       // Contra muitos blindados, mais blindados e obuseiros; senão, alguns batedores
       const scout = heavy > 0.4 ? 0.05 : 0.18;
       type = r < scout ? 'scout' : r < 0.72 ? 'tank' : arty ? 'artillery' : 'tank';
@@ -272,6 +278,20 @@ function aiArmy(ai) {
   const home = army.filter(u => !u.wave && !u.raid);
   const wave = army.filter(u => u.wave);
 
+  // Ataque grande perto de casa: a onda que está fora volta para defender (Normal e Difícil)
+  if (diff.recall && wave.length && ai.alert && gameTime - ai.alert.t < 8) {
+    const s0 = gameMap.starts[ai.team];
+    const hx = (s0.x + 0.5) * TILE, hy = (s0.y + 0.5) * TILE;
+    const raiders = units.filter(u => u.team !== ai.team && u.hp > 0 && hasWeapon(u) && dist(u.x, u.y, hx, hy) < TILE * 22);
+    if (raiders.length > 8) {
+      wave.forEach(u => { u.wave = false; });
+      orderAttackMove(wave, ai.alert.x, ai.alert.y);
+      ai.waveStartSize = 0;
+      home.push(...wave);
+      wave.length = 0;
+    }
+  }
+
   // Defesa: quem está em casa vai até onde a base foi atacada
   if (ai.alert && gameTime - ai.alert.t < 8 && gameTime - ai.lastDefend > 4) {
     const defenders = home.filter(u => !u.target);
@@ -300,6 +320,11 @@ function aiArmy(ai) {
       group.forEach(u => { u.wave = true; });
       orderAttackMove(group, target.x, target.y);
       ai.waveStartSize = group.length;
+      ai.waves++;
+      // Aviso ao jogador humano: sempre na 1ª onda; no Fácil, em todas
+      if (target.team === 0 && !teams[0].isAI && !demoMode && (ai.waves === 1 || diff.warnAllWaves)) {
+        notify('Enemy attack on the way! Gather your army near the Turrets.', '#ff7a6a', 'alert');
+      }
       ai.nextWave = gameTime + diff.waveGap;
       ai.waveSize = Math.min(diff.waveMax, ai.waveSize + diff.waveGrow);
     }
