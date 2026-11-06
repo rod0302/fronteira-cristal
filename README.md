@@ -108,9 +108,9 @@ O quadro **Objective**, no canto inferior direito, sempre sugere o próximo pass
 
 | Facção | Vantagem |
 |---|---|
-| Liga Cobalto | unidades com +18% de vida |
-| Clã Brasa | armas atiram 18% mais rápido |
-| Consórcio Âmbar | unidades custam 10% menos |
+| House Cavenaugh (azul) | unidades com +18% de vida |
+| House Hundolf (vermelha) | armas atiram 18% mais rápido |
+| House Tander (dourada) | unidades custam 10% menos |
 
 ## Estrutura
 

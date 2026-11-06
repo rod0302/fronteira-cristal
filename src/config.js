@@ -35,17 +35,17 @@ const TERRAIN = {
 //   hpMul: vida das unidades; rofMul: tempo entre tiros (menor = mais rápido); costMul: preço
 const FACTIONS = [
   {
-    id: 'cobalto', name: 'Cobalt League', bonus: 'Units have +18% health',
+    id: 'cobalto', name: 'House Cavenaugh', bonus: 'Units have +18% health',
     color: '#3d8bfd', dark: '#1f4f9a', light: '#9cc4ff',
     hpMul: 1.18, rofMul: 1, costMul: 1,
   },
   {
-    id: 'brasa', name: 'Ember Clan', bonus: 'Weapons fire 18% faster',
+    id: 'brasa', name: 'House Hundolf', bonus: 'Weapons fire 18% faster',
     color: '#d9533b', dark: '#7f2617', light: '#ffb09f',
     hpMul: 1, rofMul: 0.85, costMul: 1,
   },
   {
-    id: 'ambar', name: 'Amber Consortium', bonus: 'Units cost 10% less',
+    id: 'ambar', name: 'House Tander', bonus: 'Units cost 10% less',
     color: '#e0a526', dark: '#8a5f0c', light: '#ffe08a',
     hpMul: 1, rofMul: 1, costMul: 0.9,
   },

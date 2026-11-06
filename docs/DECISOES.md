@@ -210,3 +210,6 @@ Detalhe em `logs/rodada-3-correcoes.md`.
 - **IA mais esperta em vez de mais trapaça:** Torre logo depois do Quartel (Normal/Difícil); a onda que está fora volta quando a base sofre ataque de mais de 8 unidades; no Fácil, até 2 obuseiros depois de 20 min (acaba com o empate em torres).
 - **Objetivo pede uma Torre** depois do Quartel e o jogo avisa "Enemy attack on the way!" quando sai a 1ª onda (no Fácil, todas).
 - **Medido de novo** com os mesmos bots do crítico (216 partidas): ver logs/dificuldade-ajuste.md.
+
+### Nomes das facções (06/11/2026)
+- **As três facções viraram casas com os nomes escolhidos pelo Rodrigo**: House Cavenaugh (azul, antes Cobalt League), House Hundolf (vermelha, antes Ember Clan) e House Tander (dourada, antes Amber Consortium). Só o nome exibido mudou; os ids internos (`cobalto`, `brasa`, `ambar`), cores e vantagens continuam iguais.
